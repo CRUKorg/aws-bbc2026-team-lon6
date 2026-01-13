@@ -1,4 +1,10 @@
-# Requirements Document
+# Requirements Document - OUTDATED
+
+⚠️ **DEPRECATED**: This specification has been superseded by the **Supporter Engagement Platform** spec which incorporates these requirements along with CRUK's existing data schemas and hackathon focus areas.
+
+**New Spec Location**: `.kiro/specs/supporter-engagement-platform/requirements.md`
+
+---
 
 ## Introduction
 

@@ -1,0 +1,109 @@
+{
+  "type": "object",
+  "properties": {
+    "CloseReason": {
+      "type": "string",
+      "description": "Reason for closing the declaration. Only the value “Termination of Employment” is pre-shipped. Other values can be added through customization according to your own charity’s needs.",
+      "maxLength": 30
+    },
+    "ConfirmationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date on which the Gift Aid declaration has been confirmed to the customer. This is the start of the cooling-off period for oral declarations. By default the value of this field is set to Date Made when the declaration was saved. It cannot be before the declaration date. Accepted format: YYYY-MM-DD HH:mm:ss",
+      "maxLength": 19,
+      "examples": ["2017-07-21T17:32:28Z"]
+    },
+    "DeactivationReason": {
+      "type": "string",
+      "description": "Optional free text field for a more detailed explanation for closing the declaration. This field can be used as input, for example, for later follow up as part of an internal donor management review process.",
+      "maxLength": 30
+    },
+    "DeclarationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date the declaration was signed. Cannot be in the future. Accepted format: YYYY-MM-DD HH:mm:ss",
+      "maxLength": 19,
+      "examples": ["2017-07-21T17:32:28Z"]
+    },
+    "EndDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date when the declaration ceases to be valid. This field can be left empty if no end date is specified by the donor. Accepted format: YYYY-MM-DD HH:mm:ss\n\nIf an NTP Start Date Populated on Supporter, then End date any Live GADs, setting the status to “Ended” (Workflow Policy “SRM Non Tax Payer Start Date Update” (WFP14)).\n\nIf a new GAD record is created then clear down the Supporter NTP Date and set the NTP Flag to “N” (Workflow Policy “SRM GAD Non Tax Payer Start Date Update” (WFP13)).\n\nhttps://wiki.cancerresearchuk.org/confluence/display/BA/03.+Gift+Aid+Declaration+and+Non-Tax+Payer",
+      "maxLength": 19,
+      "examples": ["2017-07-21T17:32:28Z"]
+    },
+    "GADId": {
+      "type": "string",
+      "description": "Unique identifier for the declaration.  There is no standard format for this.  For declarations created in Siebel it is the numeric version of the system id ('1-' followed by nine digits), for third parties this is typically the three letter supplier code and a unique system identifier.",
+      "maxLength": 100
+    },
+    "GADMethod": {
+      "type": "string",
+      "description": "Method used for the GiftAid declaration\n\nDefine here how the declaration was received by your organization. The options are Written (paper), Oral or Digital. NOTE: There is no difference between Written and Digital acquisition for HMRC. We recommend using one or the other for non-oral declarations unless you have specific requirements for tracking the paper vs. digital acquisition.\n\nThe mechanism used to sign up for gift aid, this controls the process of enabling the GAD with some methods requiring a cooling-off period before they become active (with a letter being sent to the supporter confirming the details of the declaration and their responsibilities)",
+      "maxLength": 30,
+      "enum": ["Online", "Oral", "SMS", "Sponsorship", "Written"]
+    },
+    "GADStatus": {
+      "type": "string",
+      "description": "The status of the declaration.  Live indicates it is active, ended that it was live and valid but has now been ended, invalid indicates that the GAD was not correctly captured or the paperwork required for audit cannot be found and Oral Cancelled that the supporter changed their mind about signing up on receiving their confirmation letter.  Only Live and Ended GADs can be used to claim Gift Aid.",
+      "maxLength": 30,
+      "enum": [
+        "New",
+        "Live",
+        "Invalid",
+        "Ended",
+        "Oral Cancelled",
+        "Letter Required",
+        "Pending"
+      ]
+    },
+    "GADType": {
+      "type": "string",
+      "description": "Gift Aid Type, coming directly from report file (pre populated), no logic from DI process",
+      "maxLength": 30,
+      "enum": ["Custom GAD", "Enduring GAD", "One-Off GAD", "Rolling GAD"]
+    },
+    "LetterCode": {
+      "type": "string",
+      "description": "The letter code representing the letter sent to the supporter in the case of the method being Oral.",
+      "maxLength": 30,
+      "examples": ["CRUK_LETTER_CODE"]
+    },
+    "RMCampaignCode": {
+      "type": "string",
+      "description": "This is the unique identifier used for a specific Marketing Campaign, added for the Salesforce Integration.",
+      "maxLength": 80
+    },
+    "RMDataSource": {
+      "type": "string",
+      "description": "This refers to the system that sent the data, added for the Salesforce Integration.",
+      "maxLength": 30
+    },
+    "RMEventCode": {
+      "type": "string",
+      "description": "This is the unique identifier for a specific event or activity that supporters can participate in for fundraising. Added for the Salesforce Integration.",
+      "maxLength": 80
+    },
+    "StartDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "This field can be left empty to have the maximum allowed validity period (current fiscal year minus four years), or you can set a start date that limits validity of this declaration for past donations, making them ineligible for Gift Aid.\n\nStartDate is not required for Enduring GAD but is required for creation of a Custom GAD. Accepted format: YYYY-MM-DD HH:mm:ss",
+      "maxLength": 19,
+      "examples": ["2017-07-21T17:32:28Z"]
+    },
+    "OwnerType": {
+      "type": "string",
+      "description": "This field is to indicate if the source sends Organisations or Individual supporters data. If the source clearly identifies the type then they will send 'Organisation' for organisations supporters, 'Supporter' for individual supporters. If the source cannot identify the type then they will send NULL.",
+      "maxLength": 30,
+      "enum": ["Supporter", "Organisation"]
+    }
+  },
+  "required": [
+    "ConfirmationDate",
+    "DeclarationDate",
+    "GADId",
+    "GADMethod",
+    "GADType",
+    "LetterCode"
+  ]
+}

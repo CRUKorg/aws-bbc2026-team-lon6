@@ -1,0 +1,221 @@
+{
+  "type": "object",
+  "properties": {
+    "detail": {
+      "type": "object",
+      "properties": {
+        "payload": {
+          "type": "object",
+          "properties": {
+            "created_at": { "type": "string" },
+            "customer": {
+              "type": "object",
+              "properties": {
+                "default_address": {
+                  "type": "object",
+                  "properties": {
+                    "address1": {
+                      "type": "string",
+                      "pattern": "(?=^[\\d &'./A-Za-z-]+$)(?=^.{2,200}$)"
+                    },
+                    "address2": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "(?=^[\\d './A-Za-z-]+$)(?=^.{0,100}$)"
+                        },
+                        { "type": "null" }
+                      ]
+                    },
+                    "city": {
+                      "type": "string",
+                      "pattern": "(?=^[ './A-Za-z-]+$)(?=^.{2,50}$)"
+                    },
+                    "country": { "type": "string" },
+                    "zip": {
+                      "type": "string",
+                      "pattern": "(?=^[^!\"#$%&'()*+,.:;<=>?@[\\]_{}~¡£¿“€]+$)(?=^.{2,8}$)"
+                    }
+                  },
+                  "required": ["address1", "city", "country", "zip"],
+                  "additionalProperties": true
+                },
+                "email": {
+                  "type": "string",
+                  "pattern": "(?=^[^ \"(),:;<>[\\\\\\]”]+$)(?=^[^\\s\"(),:;<>@[\\]]+@[^\\s\"(),.:;<>@[\\]]+\\.[^\\s\"(),:;<>@[\\]]+$)(?=^.{2,80}$)"
+                },
+                "email_marketing_consent": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": { "state": { "type": ["string", "null"] } },
+                      "additionalProperties": true
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "phone": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "(?=^[^!\"#$%&'()*,./:;<=>?@A-Z[\\\\\\]_a-z{}~¡£¿€-]+$)(?=^.{1,16}$)"
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "sms_marketing_consent": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": { "state": { "type": ["string", "null"] } },
+                      "additionalProperties": true
+                    },
+                    { "type": "null" }
+                  ]
+                }
+              },
+              "required": ["default_address", "email"],
+              "additionalProperties": true
+            },
+            "id": { "type": "number" },
+            "line_items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "discount_allocations": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": { "amount": { "type": "string" } },
+                      "required": ["amount"],
+                      "additionalProperties": true
+                    }
+                  },
+                  "name": { "type": "string" },
+                  "price": { "type": "string" },
+                  "product_id": { "type": "number" },
+                  "properties": {
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "key": { "type": "string" },
+                            "value": { "type": ["string", "null"] }
+                          },
+                          "required": ["key"],
+                          "additionalProperties": true
+                        }
+                      },
+                      { "type": "null" }
+                    ]
+                  },
+                  "quantity": { "type": "number" },
+                  "sku": { "type": "string" },
+                  "tax_lines": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": { "price": { "type": "string" } },
+                      "required": ["price"],
+                      "additionalProperties": true
+                    }
+                  },
+                  "title": { "type": "string" }
+                },
+                "required": [
+                  "discount_allocations",
+                  "name",
+                  "price",
+                  "product_id",
+                  "quantity",
+                  "sku",
+                  "tax_lines",
+                  "title"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "shipping_address": {
+              "type": "object",
+              "properties": {
+                "first_name": {
+                  "type": "string",
+                  "pattern": "(?=^[ '.A-Za-zÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŉŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽžſƀƁƂƃƄƅƆƇƈƉƊƋƌƍƎƏƐƑƒƓƔƕƖƗƘƙƚƛƜƝƞƟƠơƢƣƤƥƦƧƨƩƪƫƬƭƮƯưƱƲƳƴƵƶƷƸƹƺƼƽƾƿǄǅǆǇǈǉǊǋǌǍǎǏǐǑǒǓǔǕǖǗǘǙǚǛǜǝǞǟǠǡǢǣǤǥǦǧǨǩǪǫǬǭǮǯǰǱǲǳǴǵǶǷǸǹǺǻǼǽǾǿȀȁȂȃȄȅȆȇȈȉȊȋȌȍȎȏȐȑȒȓȔȕȖȗȘșȚțȜȝȞȟȠȡȢȣȤȥȦȧȨȩȪȫȬȭȮȯȰȱȲȳȴȵȶȷȸȹȺȻȼȽȾȿɀɁɂɃɄɅɆɇɈɉɊɋɌɍɎɏɐɑɒɓɔɕɖɗɘəɚɛɜɝɞɟ-]+$)(?=^.{2,40}$)(?=^[^'].*$)"
+                },
+                "last_name": {
+                  "type": "string",
+                  "pattern": "(?=^[ 'A-Za-zÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŉŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽžſƀƁƂƃƄƅƆƇƈƉƊƋƌƍƎƏƐƑƒƓƔƕƖƗƘƙƚƛƜƝƞƟƠơƢƣƤƥƦƧƨƩƪƫƬƭƮƯưƱƲƳƴƵƶƷƸƹƺƼƽƾƿǄǅǆǇǈǉǊǋǌǍǎǏǐǑǒǓǔǕǖǗǘǙǚǛǜǝǞǟǠǡǢǣǤǥǦǧǨǩǪǫǬǭǮǯǰǱǲǳǴǵǶǷǸǹǺǻǼǽǾǿȀȁȂȃȄȅȆȇȈȉȊȋȌȍȎȏȐȑȒȓȔȕȖȗȘșȚțȜȝȞȟȠȡȢȣȤȥȦȧȨȩȪȫȬȭȮȯȰȱȲȳȴȵȶȷȸȹȺȻȼȽȾȿɀɁɂɃɄɅɆɇɈɉɊɋɌɍɎɏɐɑɒɓɔɕɖɗɘəɚɛɜɝɞɟ-]+$)(?=^.{2,50}$)(?=^[^'].*$)"
+                }
+              },
+              "required": ["first_name", "last_name"],
+              "additionalProperties": true
+            },
+            "shipping_lines": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "discount_allocations": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": { "amount": { "type": "string" } },
+                      "required": ["amount"],
+                      "additionalProperties": true
+                    }
+                  },
+                  "price": { "type": "string" },
+                  "tax_lines": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": { "price": { "type": "string" } },
+                      "required": ["price"],
+                      "additionalProperties": true
+                    }
+                  }
+                },
+                "required": ["discount_allocations", "price", "tax_lines"],
+                "additionalProperties": true
+              }
+            },
+            "transactions": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "status": { "type": "string" },
+                      "authorization_code": { "type": ["string", "null"] }
+                    },
+                    "required": ["status"],
+                    "additionalProperties": true
+                  }
+                },
+                { "type": "null" }
+              ]
+            }
+          },
+          "required": [
+            "created_at",
+            "customer",
+            "id",
+            "line_items",
+            "shipping_address",
+            "shipping_lines"
+          ],
+          "additionalProperties": true
+        }
+      },
+      "required": ["payload"],
+      "additionalProperties": true
+    }
+  },
+  "required": ["detail"],
+  "additionalProperties": true,
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

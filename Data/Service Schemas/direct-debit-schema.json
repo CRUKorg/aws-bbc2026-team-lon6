@@ -1,0 +1,180 @@
+{
+  "type": "object",
+  "properties": {
+    "CancellationDate": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 19,
+      "description": "Date when the direct debit is cancelled. Accepted format: YYYY-MM-DD HH:mm:ss"
+    },
+    "CancellationReasonCode": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Shows cancellation reason code"
+    },
+    "EndDate": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 19,
+      "description": "Date the authorization of the mandate expires; expiration is automatic according to the rules of the payment method, or it can be set manually. Accepted format: YYYY-MM-DD HH:mm:ss"
+    },
+    "Amount": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Direct debit amount for donation"
+    },
+    "BankAccountCodeCRUK": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "CRUK Bank account codes supplied to agencies by CRUK. These are used for reconcilliation with Agresso e.g. 144 for CRUK Regional Receipts."
+    },
+    "RestrictionCode": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Code identifying the donation should be restricted to a specific area/cancer type/project."
+    },
+    "Frequency": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "If the donation is a direct debit, this field indicates the frequency of the direct debit. If it is not a direct donation then default it to 'Once'",
+      "enum": ["Once", "Annually", "Half Yearly", "Quarterly", "Monthly"]
+    },
+    "InstructionType": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "In Siebel, it becomes 'Unknown'. It can be populated as null or Unknown.",
+      "enum": ["Unknown", "Convenant", "Paperless", "Written"]
+    },
+    "ProductCode": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Used to associate the specific financial code to an activity"
+    },
+    "MandateId": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Previously known as the DD reference. If a DD is set up manually in Siebel, it will auto-generate a reference, which is then submitted to Bacs in the lodgement / claim files. The DD ref is also auto-generated through any other DD data feeds into Siebel, e.g. online sign-ups. It will be also shown in donations as payment id."
+    },
+    "PaymentDay": {
+      "type": "string",
+      "maxLength": 8,
+      "description": "Day of the month for the direct debit to be taken. Vaild values are 5 or 19"
+    },
+    "StartDate": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 19,
+      "description": "Start date of direct debit payment. Accepted format: YYYY-MM-DD HH:mm:ss"
+    },
+    "DirectDebitStatus": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Shows direct debit status, should always be set to 'Active' for Active direct debits.",
+      "enum": ["Active", "Suspended", "Overdue", "Revised", "Cancelled"]
+    },
+    "Motivation": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Motivation for doing the donation"
+    },
+    "InMemoryName": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Direct Debit done in the memory of a person"
+    },
+    "ReceivedDate": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 19,
+      "description": "Date when the direct debit instruction was received from source. Accepted format: YYYY-MM-DD HH:mm:ss"
+    },
+    "SignedDate": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 19,
+      "description": "Date the payer authorized the mandate. Accepted format: YYYY-MM-DD HH:mm:ss"
+    },
+    "IsGiftAided": {
+      "type": "boolean",
+      "maxLength": 5,
+      "description": "Flag that indicates if the supporter wants the direct debit to be gift aided. Send true if supporter says yes to gift aid, false if says no or not applicable. Leave NULL if unknown."
+    },
+    "GADLetterCode": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Code indicating the GAD letter to be sent. Value to be defined with the stakeholders and CRM developers"
+    },
+    "GADMethod": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Method used for the GiftAid declaration"
+    },
+    "GADType": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Gift Aid Type, coming directly from report file (pre populated), no logic from DI process"
+    },
+    "AccountHolderName": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Donor's full name on their bank card that has been used to set up the Direct Debit."
+    },
+    "BankSortCode": {
+      "type": "string",
+      "maxLength": 6,
+      "description": "A 6 digit number that identifies the bank on the card which used for DD payments"
+    },
+    "BankAccountNumber": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "A unique eight-digit code that identifies the personal bank account on the card which used for DD payments"
+    },
+    "RMCampaignCode": {
+      "type": "string",
+      "maxLength": 80,
+      "description": "This is the unique identifier used for a specific Marketing Campaign, added for the Salesforce Integration."
+    },
+    "RMDataSource": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "This refers to the system that sent the data, added for the Salesforce Integration."
+    },
+    "RMFinancialAccountType": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "A categorisation of the source of a transaction into generic types (E.g. Income, expenditure, assets and liabilities to which the transactions are posted) which map to account code in CRUK Finance System. They should be applicable across business units and organisations. Added for the Salesforce Integration."
+    },
+    "RMFinancialAccountSubType": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "A further breakdown of the Financial Account Type. The purpose is to provide more detailed information on how income/expenditure is generated/spent (e.g. entry fee or donations). This maps to activity code in CRUK Finance System. Added for the Salesforce Integration."
+    },
+    "RMInMemoriam": {
+      "type": "boolean",
+      "maxLength": 5,
+      "description": "Indicates that a donation has been made in memory of a person. Added for the Salesforce Integration."
+    },
+    "RMProductCode": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "The unique identifier for a specific CRUK financial product. Added for the Salesforce Integration."
+    },
+    "OwnerType": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "This field is to indicate if the source sends Organisations or Individual supporters data. If the source clearly identifies the type then they will send 'Organisation' for organisations supporters, 'Supporter' for individual supporters. If the source cannot identify the type then they will send NULL.",
+      "enum": ["Supporter", "Organisation"]
+    }
+  },
+  "required": [
+    "AccountHolderName",
+    "Amount",
+    "BankAccountNumber",
+    "BankSortCode",
+    "DirectDebitStatus",
+    "Frequency",
+    "MandateId",
+    "PaymentDay",
+    "ReceivedDate"
+  ]
+}
