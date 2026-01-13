@@ -1,0 +1,680 @@
+{
+  "type": "object",
+  "properties": {
+    "ActivityRegisteredDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date when the fundraising page has been created at source. Leave it NULL if unknown. Accepted format: YYYY-MM-DD HH:mm:ss",
+      "maxLength": 19,
+      "examples": ["2017-07-21T17:32:28Z"]
+    },
+    "AppealName": {
+      "type": "string",
+      "description": "Name of campaign or appeal linked to the fundraising page. Leave it NULL if unknown",
+      "maxLength": 100
+    },
+    "BirthdayName": {
+      "type": "string",
+      "description": "Contains the name of the person celebrating the birthday when a fundraising page is created for a birthday occasion",
+      "maxLength": 100
+    },
+    "CompanyName": {
+      "type": "string",
+      "description": "Name of the company that creates the fundraising page",
+      "maxLength": 250
+    },
+    "EventCategory": {
+      "type": "string",
+      "description": "Category of the event linked to the fundraising page. Leave it NULL if unknown",
+      "maxLength": 50
+    },
+    "EventCode": {
+      "type": "string",
+      "description": "This field is only available for sport events.  Event code related to the supporter activity. If the supporter is a fundraiser, then this is the event code of the event they are fundraising against. In case of a donor, then this is the event code of the event they are donating to. ",
+      "maxLength": 30
+    },
+    "EventExpiryDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date when the event linked to the fundraising page expires. Accepted format: YYYY-MM-DD HH:mm:ss",
+      "maxLength": 19,
+      "examples": ["2017-07-21T17:32:28Z"]
+    },
+    "EventId": {
+      "type": "string",
+      "description": "Unique identifier of the event linked to the fundraising page. It comes from source. Leave it NULL if unknown",
+      "maxLength": 30
+    },
+    "EventName": {
+      "type": "string",
+      "description": "Name of the event linked to the fundraising page. Leave it NULL if unknown",
+      "maxLength": 100
+    },
+    "EventRegisteredDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Registration date to the event linked to the fundraising page. Leave it NULL if unknown",
+      "maxLength": 19,
+      "examples": ["2017-07-21T17:32:28Z"]
+    },
+    "EventRegistrationNumber": {
+      "type": "string",
+      "description": "If this is a event sponsorship page then send the Unique Event Registration Number from the CRUK Event Registration System",
+      "maxLength": 30
+    },
+    "FollowUp": {
+      "type": "boolean",
+      "description": "Indicates if there should be a followup engagement activity with the individual",
+      "maxLength": 5
+    },
+    "FundraiserPageConsentStatement": {
+      "type": "string",
+      "description": "Consent statement of the fundraising page provided to the fundraiser",
+      "maxLength": 500
+    },
+    "FundraiserPagePrivacyNoticeVersion": {
+      "type": "string",
+      "description": "Version of the fundraising page privacy notice provided to the fundraiser",
+      "maxLength": 100
+    },
+    "FundraiserUserId": {
+      "type": "string",
+      "description": "This will be replaced by SupporterSourceId. Unique identifier of the fundraiser. This field must be unique per supporter and is used to link the FundraisingPage file with the Supporter file",
+      "maxLength": 100
+    },
+    "FundraisingActivityId": {
+      "type": "string",
+      "description": "Unique identifier of the page linked to the donation. Used to link the donation with the fundraising page.   Mapping requirements: ensure field value matches FundraisingPage.FundraisingPageId.",
+      "maxLength": 30
+    },
+    "FundraisingActivityLocation": {
+      "type": "string",
+      "description": "Location of the fundraising activity",
+      "maxLength": 30,
+      "enum": ["Community", "Home", "Other", "School/university", "Work"]
+    },
+    "FundraisingActivityPurpose": {
+      "type": "string",
+      "description": "Attribute is used to distinguish between schools and online fundraising ",
+      "maxLength": 50
+    },
+    "FundraisingActivityType": {
+      "type": "string",
+      "description": "Available values are the following. But we could get new ones added: General sponsored activity Social Event Sport/challenge Other",
+      "maxLength": 30,
+      "enum": [
+        "General sponsored activity",
+        "Social Event",
+        "Sport/challenge",
+        "Other"
+      ]
+    },
+    "FundraisingAs": {
+      "type": "string",
+      "description": "Send if applicable. Available values are the following. But we could get new ones added: Group Individual Fundraising Group Other",
+      "maxLength": 30,
+      "enum": ["Group", "Individual", "Fundraising Group", "Other"]
+    },
+    "FundraisingPageId": {
+      "type": "string",
+      "description": "Unique identifier of the fundraising page assigned in the source system. It must be unique and cannot be NULL, so a unique value must be assigned if not provided at source when sharing the fundraising page details.  Mapping requirements: ensure field value matches FundraisingPage.FundraisingActivityId.",
+      "maxLength": 36
+    },
+    "FundraisingPageStatus": {
+      "type": "string",
+      "description": "Status of the fundraising page. There is a list of values to use to map the correct value with the expected one in PersonHub.",
+      "maxLength": 30,
+      "enum": ["Open", "Closed"]
+    },
+    "FundraisingPageTeamId": {
+      "type": "string",
+      "description": "Unique identifier of the fundraising page created as a team. This is used to link team pages to individual ones. Leave it NULL if unknown",
+      "maxLength": 36
+    },
+    "FundraisingPageTeamMemberRole": {
+      "type": "string",
+      "description": "If the page is linked to a team page this field indicates the role of the person that has created this individual page. Leave it NULL if unknown",
+      "maxLength": 50
+    },
+    "FundraisingPageType": {
+      "type": "string",
+      "description": "Type of the fundraising page received from source. There is a list of values to use to map the correct value with the expected one in PersonHub.  Mapping requirements: ensure field value matches FundraisingPage.FundraisingSuperType.",
+      "maxLength": 30,
+      "enum": [
+        "Online FR",
+        "VF Registration",
+        "Activity Management",
+        "JustGiving",
+        "Virgin Money Giving",
+        "Sports Drop Down Data"
+      ]
+    },
+    "FundraisingPageURL": {
+      "type": "string",
+      "description": "URL of the fundraising page created",
+      "maxLength": 255
+    },
+    "FundraisingSuperType": {
+      "type": "string",
+      "description": "Type of the fundraising page received from source. There is a list of values to use to map the correct value with the expected one in PersonHub.  Mapping requirements: ensure field value matches FundraisingPage.FundraisingPageType.",
+      "maxLength": 30,
+      "enum": ["Online FR", "Activity Management"]
+    },
+    "FurtherNotes": {
+      "type": "string",
+      "description": "Additional comments added to the fundraising page",
+      "maxLength": 2000
+    },
+    "GroupName": {
+      "type": "string",
+      "description": "Name of the fundrasing group in online fundraising",
+      "maxLength": 250
+    },
+    "GroupPageMembershipStatus": {
+      "type": "string",
+      "description": "Page status within a group ex: leader page,member page",
+      "maxLength": 30
+    },
+    "GroupPageType": {
+      "type": "string",
+      "description": "Type of the fundraising page created within a group",
+      "maxLength": 100
+    },
+    "GuestIndicator": {
+      "type": "boolean",
+      "description": "This flag is used to indicate that the incoming record either has no persistent ID or is using a shared ID e.g. a shared guest ID for users not logged into a website, a manual spreadsheet load without IDs. When the flag is set to true, this data will be given a one time use ID and be sent to Semarchy for matching (if not also anonymous). This data will never receive updates from this source as the ID was not persistent. When the flag is set to false, this indicates that the source sending the data will persist the ID for the same person over time, therefore updates could be received for this ID and should update the relevant person in Semarchy and downstream.  - IF GuestIndicator = true and IsAnonymousAtSource = true then the supporter will skip Semarchy and be loaded to the CRM with Anon URN  - IF GuestIndicator = true and IsAnonymousAtSource = false then the supporter will be loaded to Semarchy and use Semarchy to match the Goldern URN.  - IF GuestIndicator = false and IsAnonymousAtSource = true then the supporter will be loaded to Semarchy and set IsAnonymousAtSource = true  - IF GuestIndicator = false and IsAnonymousAtSource = false then the supporter will be loaded to Semarchy and use Semarchy to match the Goldern URN' More info here",
+      "maxLength": 5
+    },
+    "HowHeard": {
+      "type": "string",
+      "description": "Send if applicable. Way the supporter has heard about CRUK. Possible values are: Advertised on a website At a Cancer Research UK event Cancer Research UK Shop Cancer Research UK Website Friends/family/work colleagues In a local newspaper In a magazine In a national newspaper Other Poster/leaflet Received an email Received an invite Received mail in the post Search Engine Shop/supermarket Telemarketing",
+      "maxLength": 30,
+      "enum": [
+        "Advertised on a website",
+        "At a Cancer Research UK event",
+        "Cancer Research UK Shop",
+        "Cancer Research UK Website",
+        "Friends/family/work colleagues",
+        "In a local newspaper",
+        "In a magazine",
+        "In a national newspaper",
+        "Other",
+        "Poster/leaflet",
+        "Received an email",
+        "Received an invite",
+        "Received mail in the post",
+        "Search Engine",
+        "Shop/supermarket",
+        "Telemarketing"
+      ]
+    },
+    "InMemoriamDateOfBirth": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date of Birth of the person to whom the 'in memoriam' fundraising is done",
+      "maxLength": 19,
+      "examples": ["2017-07-21T17:32:28Z"]
+    },
+    "InMemoriamDateOfDeath": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date of death of the person to whom the 'in memoriam' fundraising is done",
+      "maxLength": 19,
+      "examples": ["2017-07-21T17:32:28Z"]
+    },
+    "InMemoriamFirstName": {
+      "type": "string",
+      "description": "First name of the person to whom the 'in memoriam' fundraising is done",
+      "maxLength": 50
+    },
+    "InMemoriamGender": {
+      "type": "string",
+      "description": "Gender of the person to whom the 'in memoriam' fundraising is done",
+      "maxLength": 30
+    },
+    "InMemoriamId": {
+      "type": "string",
+      "description": "Unique identifier of the 'in memoriam' activity at source.",
+      "maxLength": 30
+    },
+    "InMemoriamLastName": {
+      "type": "string",
+      "description": "Last name of the person to whom the 'in memoriam' fundraising is done",
+      "maxLength": 100
+    },
+    "InMemoriamRelationship": {
+      "type": "string",
+      "description": "Relationship between the fundraiser and the person to whom the 'in memoriam' fundraising is done",
+      "maxLength": 50
+    },
+    "InMemoriamTown": {
+      "type": "string",
+      "description": "Town of the person to whom the 'in memoriam' fundraising is done",
+      "maxLength": 40
+    },
+    "InMemoryName": {
+      "type": "string",
+      "description": "Names of the people the 'in memoriam' event is made for",
+      "maxLength": 100
+    },
+    "IsEventOverseas": {
+      "type": "boolean",
+      "description": "Flag that indicates if the event takes place overseas",
+      "maxLength": 5
+    },
+    "IsEventPromoted": {
+      "type": "boolean",
+      "description": "Flag that indicates if the event is promoted",
+      "maxLength": 5
+    },
+    "IsEventUserCreated": {
+      "type": "boolean",
+      "description": "Flag that indicates if the event has been created by the user",
+      "maxLength": 5
+    },
+    "IsInMemoriam": {
+      "type": "boolean",
+      "description": "Flag that indicates if the fundraising page is for an in memoriam event or not",
+      "maxLength": 5
+    },
+    "LastModifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date when the fundraising page was updated at source. Leave it NULL if unknown",
+      "maxLength": 19,
+      "examples": ["2017-07-21T17:32:28Z"]
+    },
+    "Motivation": {
+      "type": "string",
+      "description": "Motivation for doing the fundraising activity. Available Values currently: Celebrate an all clear Enjoy Organising Fundraising Experience of Cancer Good Cause In memoriam Previous Participant Research into Cancer",
+      "maxLength": 30,
+      "enum": [
+        "Celebrate an all clear",
+        "Enjoy Organising Fundraising",
+        "Experience of Cancer",
+        "Good Cause",
+        "In memoriam",
+        "Previous Participant",
+        "Research into Cancer"
+      ]
+    },
+    "NoFollowUpReason": {
+      "type": "string",
+      "description": "Short description for reason supporter doesn't want to be contacted",
+      "maxLength": 250
+    },
+    "OrganisationPortalName": {
+      "type": "string",
+      "description": "Name of the third party organisation responsible for the event linked to the fundraising page.",
+      "maxLength": 100
+    },
+    "OrganisationPortalURL": {
+      "type": "string",
+      "description": "URL of the third party organisation responsible for the event linked to the fundraising page.",
+      "maxLength": 150
+    },
+    "PackDeliveryMethod": {
+      "type": "string",
+      "description": "Delivery method of the pack requested when creating the fundraising page. There is a list of values to use to map the correct value with the expected one in PersonHub.",
+      "maxLength": 30,
+      "enum": ["Downloaded Pack", "Mailed Pack", "No Pack"]
+    },
+    "PackTShirtSize": {
+      "type": "string",
+      "description": "Send if applicable. TS TM TL TX TXX ",
+      "maxLength": 30,
+      "enum": ["TS", "TM", "TL", "TX", "TXX "]
+    },
+    "PackType": {
+      "type": "string",
+      "description": "Type of pack requested when creating the fundraising page. There is a list of values to use to map the correct value with the expected one in PersonHub.",
+      "maxLength": 30,
+      "enum": [
+        "Activity Only - No Pack",
+        "BCA Fundraising Info Pack",
+        "BCA Fundraising Inspire Pack",
+        "BMF Pack",
+        "Fundraising Info Pack",
+        "Fundraising Inspire Pack",
+        "Kids and Teens Pack",
+        "No Pack",
+        "SU2C Fundraising Reg Pack 2013"
+      ]
+    },
+    "PageCloseDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Send date when page was closed",
+      "maxLength": 19,
+      "examples": ["2017-07-21T17:32:28Z"]
+    },
+    "PageCreatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date when the fundraising page has been created at source. Leave it NULL if unknown",
+      "maxLength": 19,
+      "examples": ["2017-07-21T17:32:28Z"]
+    },
+    "PageDescription": {
+      "type": "string",
+      "description": "Short description of the Fundraising activity.",
+      "maxLength": 255
+    },
+    "PageExpiryDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date when the fundraising page expires",
+      "maxLength": 19,
+      "examples": ["2017-07-21T17:32:28Z"]
+    },
+    "PageTitle": {
+      "type": "string",
+      "description": "Title given to the fundraising page. Leave it NULL if unknown",
+      "maxLength": 100
+    },
+    "ParentPageActivityId": {
+      "type": "string",
+      "description": "UUID of Parent Page",
+      "maxLength": 36
+    },
+    "PledgeAmount": {
+      "type": "string",
+      "description": "Amount of the fundraising page pledge",
+      "maxLength": 20
+    },
+    "ProductCode": {
+      "type": "string",
+      "description": "Product code related to the supporter activity. If the supporter is a fundraiser, then this is the product code of the event they are fundraising against. In case of a donor, then this is the product code of the event they are donating to. ",
+      "maxLength": 100
+    },
+    "RMCampaignCode": {
+      "type": "string",
+      "description": "This is the unique identifier used for a specific Marketing Campaign",
+      "maxLength": 80
+    },
+    "RMCollectionType": {
+      "type": "string",
+      "description": "The 'Method of Fundraising' field categorises the various ways in which donations and support are generated for CRUK. This field helps in understanding and tracking the source and type of fundraising that has led to a donation",
+      "maxLength": 40,
+      "enum": [
+        "Collection - General",
+        "Funeral Collection",
+        "In Memory",
+        "House to House Collection",
+        "Street Collection",
+        "Collection on Private Property",
+        "Static Collection Boxes",
+        "Bake Sale",
+        "Race Flower Sale"
+      ]
+    },
+    "RMDataSource": {
+      "type": "string",
+      "description": "This refers to the system that sent the data",
+      "maxLength": 30,
+      "enum": [
+        "10K",
+        "AB",
+        "ACM",
+        "ACTN",
+        "ACTV",
+        "ATOS",
+        "AWS",
+        "BF",
+        "BMF",
+        "BRAY",
+        "BT",
+        "CAF",
+        "CC",
+        "CCDM",
+        "CCHAL",
+        "CCMP",
+        "CONN",
+        "CORP",
+        "CT",
+        "CV",
+        "DA",
+        "DF",
+        "DRP",
+        "DYN",
+        "EACT",
+        "ECM",
+        "EDM",
+        "EN",
+        "ERM",
+        "ESS",
+        "ET",
+        "EWS",
+        "FBK",
+        "FFL",
+        "FNX",
+        "FPS",
+        "FSS",
+        "FSTC",
+        "FSTC-Duplicate",
+        "FWS",
+        "FWSS",
+        "GF",
+        "GFM",
+        "GFT",
+        "GG",
+        "GTD",
+        "HCP",
+        "HF",
+        "HMD",
+        "HR",
+        "HS",
+        "HX",
+        "IMP",
+        "JG",
+        "JGD",
+        "JGDONORS",
+        "JGP",
+        "JL",
+        "LAWB",
+        "LI",
+        "LOT",
+        "ML",
+        "MM",
+        "MP",
+        "ND",
+        "NED",
+        "NEDA",
+        "NEJG",
+        "NEVM",
+        "OFR",
+        "OGN",
+        "ONDON",
+        "OPF",
+        "OPM",
+        "ORB",
+        "PB",
+        "PersonHub",
+        "PF",
+        "PGMS",
+        "POV",
+        "PRL",
+        "PS",
+        "PURE",
+        "R4L",
+        "R4M",
+        "RBS",
+        "RE",
+        "REDM",
+        "REHV",
+        "RF",
+        "RFR",
+        "Salesforce",
+        "SBL",
+        "SCH-WEB",
+        "SHOP",
+        "Siebel",
+        "SLOT",
+        "SP",
+        "SPK",
+        "SPOK",
+        "SPTS",
+        "SRM",
+        "SS",
+        "STS",
+        "SUCR",
+        "SWCG",
+        "TALENT",
+        "TCG",
+        "TFCR",
+        "THSH",
+        "TKM",
+        "TR",
+        "TS",
+        "TTTH",
+        "UC",
+        "UN",
+        "UpwardComms",
+        "VALL",
+        "VGE",
+        "VOL",
+        "WEB",
+        "WI",
+        "JOT",
+        "NJ",
+        "YFR"
+      ]
+    },
+    "RMEventCode": {
+      "type": "string",
+      "description": "This is the unique identifier for a specific event or activity that supporters can participate in for fundraising.",
+      "maxLength": 80
+    },
+    "RMFinancialAccountSubType": {
+      "type": "string",
+      "description": "A further breakdown of the Financial Account Type. The purpose is to provide more detailed information on how income/expenditure is generated/spent (e.g. entry fee or donations). This maps to activity code in CRUK Finance System.",
+      "maxLength": 40
+    },
+    "RMFinancialAccountType": {
+      "type": "string",
+      "description": "A categorisation of the source of a transaction into generic types (E.g. Income, expenditure, assets and liabilities to which the transactions are posted) which map to account code in CRUK Finance System. They should be applicable across business units and organisations. ",
+      "maxLength": 40
+    },
+    "RMInMemoriam": {
+      "type": "boolean",
+      "description": "Indicates that a donation has been made in memory of a person",
+      "maxLength": 5
+    },
+    "RMProductCode": {
+      "type": "string",
+      "description": "The unique identifier for a specific CRUK financial product",
+      "maxLength": 100
+    },
+    "ReferenceCharityArea": {
+      "type": "string",
+      "description": "Name of the charity are to which the fundraising page was created for",
+      "maxLength": 100
+    },
+    "ReferenceEventCategory": {
+      "type": "string",
+      "description": "CRUK event category linked to the fundraising page",
+      "maxLength": 100
+    },
+    "ReferenceIs3rdPartyEvent": {
+      "type": "boolean",
+      "description": "Flag that indicates if the event is organised by a third party organisation",
+      "maxLength": 5
+    },
+    "ReferenceIsCRUKEvent": {
+      "type": "boolean",
+      "description": "Flag that indicates if the event is a CRUK event",
+      "maxLength": 5
+    },
+    "ReferenceIsUserCreatedEvent": {
+      "type": "boolean",
+      "description": "Flag that indicates if the event has been created by the supporter",
+      "maxLength": 5
+    },
+    "ReferenceManagementTeam": {
+      "type": "string",
+      "description": "CRUK team managing the event linked to the fundraising page",
+      "maxLength": 100
+    },
+    "ReferenceProduct": {
+      "type": "string",
+      "description": "CRUK product linked to the fundraising page id",
+      "maxLength": 100
+    },
+    "ReferralWebsiteName": {
+      "type": "string",
+      "description": "Name of the website of the source system",
+      "maxLength": 100
+    },
+    "ReferralWebsiteURL": {
+      "type": "string",
+      "description": "URL of the website of the source system",
+      "maxLength": 150
+    },
+    "RestrictionCode": {
+      "type": "string",
+      "description": "Restriction code related to the supporter activity. If the supporter is a fundraiser, then this is the restriction code of the event they are fundraising against. In case of a donor, then this is the restriction code of the event they are donating to. Leave it NULL if not required",
+      "maxLength": 50
+    },
+    "SponsorshipTarget": {
+      "type": "string",
+      "description": "Target amount hoping to raise",
+      "maxLength": 20
+    },
+    "StagingId": {
+      "type": "string",
+      "description": "",
+      "maxLength": 100
+    },
+    "TargetAmount": {
+      "type": "string",
+      "description": "Target amount expected to be raised in the fundraising page. Leave it NULL if unknown",
+      "maxLength": 20
+    },
+    "TeamMembers": {
+      "type": "string",
+      "description": "Name of the members of the team participating in the event of the fundraising page",
+      "maxLength": 250
+    },
+    "TeamName": {
+      "type": "string",
+      "description": "Name the team participating in the event of the fundraising page",
+      "maxLength": 100
+    },
+    "TeamURL": {
+      "type": "string",
+      "description": "URL of the team participating in the event of the fundraising page",
+      "maxLength": 150
+    },
+    "UniqueId": {
+      "type": "string",
+      "description": "",
+      "maxLength": 50
+    },
+    "WeddingNames": {
+      "type": "string",
+      "description": "Contains the name of the people getting married when a fundraising page is created for a wedding occasion. Leave it NULL if unknown",
+      "maxLength": 50
+    },
+    "RMFundraisingPageStatus": {
+      "type": "string",
+      "description": "Status of the fundraising page. There is a list of values to use to map the correct value with the expected one in PersonHub.",
+      "maxLength": 30
+    },
+    "OwnerType": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Indicates whether the owner of the fundraising page is a Supporter or an Organisation.",
+      "enum": ["Supporter", "Organisation"]
+    }
+  },
+  "required": [
+    "FollowUp",
+    "FundraisingActivityId",
+    "FundraisingPageId",
+    "FundraisingPageStatus",
+    "FundraisingPageType",
+    "FundraisingSuperType",
+    "ProductCode",
+    "RMFundraisingPageStatus"
+  ]
+}
