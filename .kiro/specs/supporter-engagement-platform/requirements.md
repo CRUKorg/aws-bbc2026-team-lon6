@@ -16,7 +16,19 @@ The Supporter Engagement Platform is an AI-powered digital experience that bridg
 
 ## Requirements
 
-### Requirement 1: Schema-Compliant Supporter Profile Dashboard
+### Requirement 1: Intelligent Information Access and Personalization
+
+**User Story:** As a person affected by cancer, I want to receive personalized, relevant information through AI that understands my specific situation, so that I can make informed decisions and feel supported throughout my journey.
+
+#### Acceptance Criteria
+
+1. WHEN a user provides their cancer type and treatment stage, THE Personalization_Engine SHALL deliver tailored information relevant to their specific circumstances
+2. WHEN a user has limited health literacy, THE system SHALL automatically adjust language complexity and provide simplified explanations
+3. WHEN a user requests information in a different language, THE system SHALL provide multilingual support for key cancer information
+4. WHEN a user asks a question, THE system SHALL surface the most relevant resources from CRUK's information library within 3 seconds
+5. WHERE appropriate consent is provided, THE Personalization_Engine SHALL process special category personal data to enhance information relevance
+
+### Requirement 2: Schema-Compliant Supporter Profile Dashboard
 
 **User Story:** As a CRUK supporter, I want to see all my engagement activities in one personalized dashboard that integrates with existing CRUK systems, so that I feel recognized for my contributions and can easily continue my support journey.
 
@@ -28,43 +40,7 @@ The Supporter Engagement Platform is an AI-powered digital experience that bridg
 4. WHEN showing fundraising activities, THE Supporter_Profile SHALL integrate FundraisingPageType, TargetAmount, and EventName from fundraising-page-schema
 5. THE Supporter_Profile SHALL maintain WCAG 2.1 AA accessibility standards with keyboard navigation support
 
-### Requirement 2: AI-Powered Intelligent Information Access
-
-**User Story:** As a person affected by cancer, I want personalized, relevant information delivered through an AI interface that understands my specific situation, so that I can make informed decisions and feel supported throughout my journey.
-
-#### Acceptance Criteria
-
-1. WHEN a user provides their cancer type and treatment stage, THE Personalization_Engine SHALL deliver tailored information relevant to their specific circumstances
-2. WHEN processing health-related queries, THE Consent_Manager SHALL obtain explicit consent before processing special category personal data
-3. THE Personalization_Engine SHALL adjust language complexity based on health literacy levels and provide multilingual support for key cancer information
-4. WHEN a user asks a question, THE system SHALL surface the most relevant resources from CRUK's information library within 3 seconds
-5. THE system SHALL provide 24/7 conversational support while triaging complex queries to appropriate CRUK specialists
-
-### Requirement 3: Transformation-Accelerating Onboarding Journey
-
-**User Story:** As a new or returning supporter, I want to customize my experience by sharing my interests and preferences through an intelligent onboarding flow, so that I receive relevant content and opportunities that match my values while contributing to CRUK's transformation goals.
-
-#### Acceptance Criteria
-
-1. WHEN a supporter begins onboarding, THE Onboarding_Engine SHALL collect persona type, cancer interests, and communication preferences through a 3-5 step flow
-2. THE Onboarding_Engine SHALL generate insights about supporter preferences and journey patterns to inform transformation priorities
-3. THE Consent_Manager SHALL provide granular consent options for different types of data processing, including special category health data
-4. WHEN onboarding is complete, THE system SHALL demonstrate personalized content preview showing transformation programme benefits
-5. THE Onboarding_Engine SHALL create synthetic datasets for testing personalization strategies safely during transformation
-
-### Requirement 4: Evidence-Based Donation Impact Tracking
-
-**User Story:** As a donor, I want to see tangible outcomes from my contributions linked to CRUK's actual research achievements, so that I feel connected to the mission and motivated to continue supporting breakthrough discoveries like cisplatin, abiraterone, and tamoxifen.
-
-#### Acceptance Criteria
-
-1. WHEN a supporter makes a donation, THE Impact_Tracker SHALL map contributions to specific research outcomes using honest, evidence-based framing linked to CRUK's drug discovery history
-2. THE Impact_Tracker SHALL maintain donation streaks using ReceivedDate and Amount fields from donation-schema to track consecutive months with donations
-3. WHEN displaying impact stories, THE Impact_Tracker SHALL reference actual CRUK achievements including Nobel Prize winners and life-saving drug discoveries
-4. THE Impact_Tracker SHALL provide streak progress indicators with gentle encouragement using CRUK's empathetic tone of voice guidelines
-5. THE Impact_Tracker SHALL link all impact claims to verifiable CRUK research pages and publications
-
-### Requirement 5: Supporter Journey Acceleration Through AI
+### Requirement 3: AI-Powered Supporter Journey Acceleration
 
 **User Story:** As a supporter with unique motivations and capacity, I want AI to inspire me to take meaningful action by identifying my best next step, so that I can maximize my impact on CRUK's mission.
 
@@ -76,7 +52,31 @@ The Supporter Engagement Platform is an AI-powered digital experience that bridg
 4. WHEN generating recommendations, THE system SHALL explain reasoning with clear statements like "Because you're interested in..." following CRUK's transparent communication principles
 5. THE system SHALL personalize communication without requiring complete data integration, demonstrating transformation programme benefits
 
-### Requirement 6: Privacy-First Data Management with GDPR Compliance
+### Requirement 4: Intelligent Onboarding and Preference Management
+
+**User Story:** As a new or returning supporter, I want to customize my experience by sharing my interests and preferences through an intelligent onboarding flow, so that I receive relevant content and opportunities that match my values while contributing to CRUK's transformation goals.
+
+#### Acceptance Criteria
+
+1. WHEN a supporter begins onboarding, THE Onboarding_Engine SHALL collect persona type, cancer interests, and communication preferences through a 3-5 step flow
+2. THE Onboarding_Engine SHALL generate insights about supporter preferences and journey patterns to inform transformation priorities
+3. THE Onboarding_Engine SHALL allow supporters to skip any step while maintaining core functionality
+4. WHEN onboarding is complete, THE system SHALL demonstrate personalized content preview showing transformation programme benefits
+5. THE Onboarding_Engine SHALL create synthetic datasets for testing personalization strategies safely during transformation
+
+### Requirement 5: Evidence-Based Donation Impact Tracking
+
+**User Story:** As a donor, I want to see tangible outcomes from my contributions linked to CRUK's actual research achievements, so that I feel connected to the mission and motivated to continue supporting breakthrough discoveries like cisplatin, abiraterone, and tamoxifen.
+
+#### Acceptance Criteria
+
+1. WHEN a supporter makes a donation, THE Impact_Tracker SHALL map contributions to specific research outcomes using honest, evidence-based framing linked to CRUK's drug discovery history
+2. THE Impact_Tracker SHALL maintain donation streaks using ReceivedDate and Amount fields from donation-schema to track consecutive months with donations
+3. WHEN displaying impact stories, THE Impact_Tracker SHALL reference actual CRUK achievements including Nobel Prize winners and life-saving drug discoveries
+4. THE Impact_Tracker SHALL provide streak progress indicators with gentle encouragement using CRUK's empathetic tone of voice guidelines
+5. THE Impact_Tracker SHALL link all impact claims to verifiable CRUK research pages and publications
+
+### Requirement 6: Privacy-First Data Management and GDPR Compliance
 
 **User Story:** As a supporter sharing personal and potentially sensitive health information, I want transparent control over my data usage with clear consent mechanisms, so that I can trust CRUK with my information while supporting their mission.
 
@@ -88,17 +88,17 @@ The Supporter Engagement Platform is an AI-powered digital experience that bridg
 4. THE system SHALL maintain timestamped audit logs of all consent decisions using existing BatchId and metadata structures for compliance
 5. THE Supporter_Profile SHALL function with core features even when supporters decline advanced personalization consent
 
-### Requirement 7: Scalable Integration Architecture
+### Requirement 7: Conversational AI Support and Triage
 
-**User Story:** As a CRUK system administrator, I want the platform to integrate seamlessly with existing data schemas and handle high supporter volumes, so that we can serve the entire supporter community while informing transformation decisions.
+**User Story:** As someone navigating cancer or supporting CRUK's mission, I want empathetic, 24/7 conversational AI support that understands my emotional state, so that I can get help when I need it most while contributing to transformation insights.
 
 #### Acceptance Criteria
 
-1. THE system SHALL integrate with existing CRUK data schemas (person-schema-1-1-4, donation-schema, fundraising-page-schema) without modification
-2. THE Supporter_Profile SHALL load within 2 seconds using cached data from existing PublisherID sources (ACM, ECM, EWS, OFR, OPS)
-3. THE Impact_Tracker SHALL process donation data in real-time using existing DonationId and PaymentProviderTransactionId fields
-4. THE system SHALL handle at least 5,000 concurrent users while maintaining sub-second response times for personalized content
-5. THE platform SHALL implement comprehensive error handling and graceful degradation when external systems are unavailable
+1. THE system SHALL provide 24/7 conversational support for cancer information queries using CRUK's empathetic tone of voice guidelines
+2. WHEN a user expresses distress or emotional difficulty, THE system SHALL respond with empathy and signpost to appropriate counseling services
+3. THE system SHALL triage complex medical questions to appropriate CRUK specialists while maintaining conversation context
+4. WHEN processing supporter queries, THE system SHALL identify optimal engagement opportunities (volunteer, fundraise, campaign) based on conversation context
+5. THE system SHALL generate anonymized insights from conversations to inform transformation programme content strategy and supporter journey optimization
 
 ### Requirement 8: Transformation Programme Analytics and Insights
 
@@ -112,31 +112,19 @@ The Supporter Engagement Platform is an AI-powered digital experience that bridg
 4. THE system SHALL provide predictive analytics on supporter lifetime value trends using existing IsHighValueSupporter classifications
 5. THE system SHALL demonstrate proof-of-concept for unified experiences that inform transformation priorities and validate personalization assumptions
 
-### Requirement 9: Conversational AI Support Integration
+### Requirement 9: Scalable Integration Architecture
 
-**User Story:** As someone navigating cancer or supporting CRUK's mission, I want empathetic, 24/7 conversational AI support that understands my emotional state, so that I can get help when I need it most while contributing to transformation insights.
-
-#### Acceptance Criteria
-
-1. THE system SHALL provide 24/7 conversational support for cancer information queries using CRUK's empathetic tone of voice guidelines
-2. WHEN a user expresses distress or emotional difficulty, THE system SHALL respond with empathy and signpost to appropriate counseling services
-3. THE system SHALL triage complex medical questions to appropriate CRUK specialists while maintaining conversation context
-4. WHEN processing supporter queries, THE system SHALL identify optimal engagement opportunities (volunteer, fundraise, campaign) based on conversation context
-5. THE system SHALL generate anonymized insights from conversations to inform transformation programme content strategy and supporter journey optimization
-
-### Requirement 10: Mobile-Responsive Cross-Platform Experience
-
-**User Story:** As a supporter accessing CRUK on mobile devices, I want a seamless experience across all platforms that maintains full functionality, so that I can engage with the organization anywhere while contributing to transformation insights.
+**User Story:** As a CRUK system administrator, I want the platform to integrate seamlessly with existing data schemas and handle high supporter volumes, so that we can serve the entire supporter community while informing transformation decisions.
 
 #### Acceptance Criteria
 
-1. THE Supporter_Profile SHALL provide responsive design that adapts to mobile, tablet, and desktop screen sizes while maintaining schema integration
-2. THE Onboarding_Engine SHALL optimize form interactions for touch interfaces with appropriate input validation for existing schema fields
-3. THE Impact_Tracker SHALL display donation streaks and research impact stories in mobile-friendly formats with easy navigation
-4. THE system SHALL maintain full functionality across iOS Safari, Android Chrome, and desktop browsers with consistent data synchronization
-5. THE platform SHALL support offline viewing of previously loaded profile data and impact stories while queuing updates for when connectivity returns
+1. THE system SHALL integrate with existing CRUK data schemas (person-schema-1-1-4, donation-schema, fundraising-page-schema) without modification
+2. THE Supporter_Profile SHALL load within 2 seconds using cached data from existing PublisherID sources (ACM, ECM, EWS, OFR, OPS)
+3. THE Impact_Tracker SHALL process donation data in real-time using existing DonationId and PaymentProviderTransactionId fields
+4. THE system SHALL handle at least 5,000 concurrent users while maintaining sub-second response times for personalized content
+5. THE platform SHALL implement comprehensive error handling and graceful degradation when external systems are unavailable
 
-### Requirement 11: Multi-Modal Accessibility and Content Quality
+### Requirement 10: Multi-Modal Accessibility and Content Quality
 
 **User Story:** As a person with diverse accessibility needs seeking cancer information, I want to interact with the system through multiple channels and receive accurate, evidence-based information, so that I can access support regardless of my abilities and trust the guidance I receive.
 
@@ -147,3 +135,15 @@ The Supporter Engagement Platform is an AI-powered digital experience that bridg
 3. THE system SHALL only surface content that has been medically reviewed and approved by CRUK experts with appropriate disclaimers about consulting healthcare professionals
 4. WHEN providing medical information, THE system SHALL flag potentially harmful queries and redirect to emergency services when appropriate
 5. THE system SHALL maintain content freshness by regularly updating its knowledge base with new CRUK publications and research findings
+
+### Requirement 11: Cross-Platform Mobile Experience
+
+**User Story:** As a supporter accessing CRUK on mobile devices, I want a seamless experience across all platforms that maintains full functionality, so that I can engage with the organization anywhere while contributing to transformation insights.
+
+#### Acceptance Criteria
+
+1. THE system SHALL provide responsive design that adapts to mobile, tablet, and desktop screen sizes while maintaining schema integration
+2. THE Onboarding_Engine SHALL optimize form interactions for touch interfaces with appropriate input validation for existing schema fields
+3. THE Impact_Tracker SHALL display donation streaks and research impact stories in mobile-friendly formats with easy navigation
+4. THE system SHALL maintain full functionality across iOS Safari, Android Chrome, and desktop browsers with consistent data synchronization
+5. THE platform SHALL support offline viewing of previously loaded profile data and impact stories while queuing updates for when connectivity returns
