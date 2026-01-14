@@ -102,19 +102,9 @@ Information Seeking Experience input:
 * User's intent is recorded
 User sentiment request:
 
-Existing structured information (knowledge and tools):
-* an MCP server/API that can call a database associated with a given user and return values for given fields
-* an MCP server/API that can call a database in real-time to find out about most recent transactions (to validate a user has just donated)
-* list of pages the user has visited
-* an MCP server/API that call call a database of some research papers we have recently published
-* TBC ---- others available in github repository
-
-
-
 ---
 
 NFR
-We think that in order to do this, we will want MCP servers and an agentic architecture.
 We believe that a low-cost, low latency solution will be the best value for our supporters
 The solution needs to be secure and compliant with relevant regulatiosn including GDPR and financial compliance frameworks.
 ---
