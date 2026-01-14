@@ -30,6 +30,7 @@ export const DonationWidget: React.FC<DonationWidgetProps> = ({
     const amount = parseFloat(customAmount);
     if (amount && amount > 0) {
       handleDonate(amount);
+      setCustomAmount('');
     }
   };
 
@@ -54,6 +55,11 @@ export const DonationWidget: React.FC<DonationWidgetProps> = ({
           placeholder="Other amount"
           value={customAmount}
           onChange={(e) => setCustomAmount(e.target.value)}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              handleCustomDonate();
+            }
+          }}
           min="1"
           step="1"
         />

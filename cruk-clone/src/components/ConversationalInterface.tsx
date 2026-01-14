@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import apiClient, { ChatMessage, AgentResponse } from '../services/api';
+import apiClient, { ChatMessage, AgentResponse, getMockUserId } from '../services/api';
 import './ConversationalInterface.css';
 
 interface ConversationalInterfaceProps {
@@ -16,7 +16,7 @@ export const ConversationalInterface: React.FC<ConversationalInterfaceProps> = (
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputText, setInputText] = useState('');
   const [loading, setLoading] = useState(false);
-  const [sessionId, setSessionId] = useState(initialSessionId || `session-${Date.now()}`);
+  const [sessionId] = useState(initialSessionId || `session-${Date.now()}`);
   const [isConnected, setIsConnected] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -89,7 +89,7 @@ export const ConversationalInterface: React.FC<ConversationalInterfaceProps> = (
       if (isConnected) {
         // Send via WebSocket
         apiClient.sendWebSocketMessage({
-          userId: userId || apiClient.getMockUserId(),
+          userId: userId || getMockUserId(),
           input: {
             text: inputText,
             timestamp: new Date().toISOString()

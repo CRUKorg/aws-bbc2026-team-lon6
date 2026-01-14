@@ -12,7 +12,7 @@ export const setMockUserId = (userId: string) => {
   mockUserId = userId;
 };
 
-export const getMockUserId = () => mockUserId;
+export const getMockUserId = (): string => mockUserId;
 
 // Types
 export interface UserProfile {
