@@ -7,7 +7,8 @@ interface HeroCardProps {
   title: string;
   description: string;
   buttonText: string;
-  imagePlaceholder: string;
+  imageUrl?: string;
+  imagePlaceholder?: string;
 }
 
 export const HeroCard: React.FC<HeroCardProps> = ({ 
@@ -15,12 +16,17 @@ export const HeroCard: React.FC<HeroCardProps> = ({
   title, 
   description, 
   buttonText,
+  imageUrl,
   imagePlaceholder 
 }) => {
   return (
     <div className="hero-card">
       <div className="hero-card-image">
-        {imagePlaceholder}
+        {imageUrl ? (
+          <img src={imageUrl} alt={title} className="card-image" />
+        ) : (
+          <span className="image-placeholder">{imagePlaceholder}</span>
+        )}
       </div>
       <div className="hero-card-content">
         <SmartText 

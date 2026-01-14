@@ -20,7 +20,11 @@ export const Header: React.FC = () => {
         <div className="container">
           <div className="header-content">
             <div className="logo">
-              <SmartText id="logo-text" defaultText="Cancer Research UK" as="h1" />
+              <img 
+                src="/images/logo.svg" 
+                alt="Cancer Research UK"
+                className="logo-image"
+              />
             </div>
             <div className="header-actions">
               <button className="btn-search">Search</button>

@@ -36,11 +36,14 @@
   align-items: center;
 }
 
-.logo h1 {
-  color: #2e008b;
-  font-size: 28px;
-  font-weight: bold;
-  margin: 0;
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 50px;
+  width: auto;
 }
 
 .header-actions {

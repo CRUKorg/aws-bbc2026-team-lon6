@@ -43,10 +43,18 @@ export const Footer: React.FC = () => {
           </div>
         </div>
         <div className="footer-social">
-          <div className="social-icon">f</div>
-          <div className="social-icon">t</div>
-          <div className="social-icon">i</div>
-          <div className="social-icon">y</div>
+          <a href="https://www.facebook.com/cancerresearchuk" className="social-icon" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+            <img src="/images/facebook.svg" alt="Facebook" />
+          </a>
+          <a href="https://twitter.com/CR_UK" className="social-icon" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+            <img src="/images/twitter.svg" alt="Twitter" />
+          </a>
+          <a href="https://www.instagram.com/cr_uk" className="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <img src="/images/instagram.svg" alt="Instagram" />
+          </a>
+          <a href="https://www.youtube.com/user/cancerresearchuk" className="social-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <img src="/images/youtube.svg" alt="YouTube" />
+          </a>
         </div>
         <div className="footer-bottom">
           <SmartText 
