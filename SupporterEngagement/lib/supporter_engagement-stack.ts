@@ -139,19 +139,8 @@ export class SupporterEngagementStack extends cdk.Stack {
     const getUserProfileLambda = new lambda.Function(this, 'GetUserProfileFunction', {
       functionName: 'SupporterEngagement-GetUserProfile',
       runtime: lambda.Runtime.NODEJS_20_X,
-      handler: 'index.handler',
-      code: lambda.Code.fromAsset('lambda/get-user-profile', {
-        bundling: {
-          image: lambda.Runtime.NODEJS_20_X.bundlingImage,
-          command: [
-            'bash', '-c', [
-              'cp -r /asset-input/* /asset-output/',
-              'cd /asset-output',
-              'npm install --omit=dev'
-            ].join(' && ')
-          ]
-        }
-      }),
+      handler: 'get-user-profile/index.handler',
+      code: lambda.Code.fromAsset('lambda/get-user-profile/dist'),
       environment: lambdaEnvironment,
       role: lambdaRole,
       timeout: cdk.Duration.seconds(30),
@@ -162,19 +151,8 @@ export class SupporterEngagementStack extends cdk.Stack {
     const personalizationAgentLambda = new lambda.Function(this, 'PersonalizationAgentFunction', {
       functionName: 'SupporterEngagement-PersonalizationAgent',
       runtime: lambda.Runtime.NODEJS_20_X,
-      handler: 'index.handler',
-      code: lambda.Code.fromAsset('lambda/personalization-agent', {
-        bundling: {
-          image: lambda.Runtime.NODEJS_20_X.bundlingImage,
-          command: [
-            'bash', '-c', [
-              'cp -r /asset-input/* /asset-output/',
-              'cd /asset-output',
-              'npm install --omit=dev'
-            ].join(' && ')
-          ]
-        }
-      }),
+      handler: 'personalization-agent/index.handler',
+      code: lambda.Code.fromAsset('lambda/personalization-agent/dist'),
       environment: lambdaEnvironment,
       role: lambdaRole,
       timeout: cdk.Duration.seconds(60),
@@ -185,19 +163,8 @@ export class SupporterEngagementStack extends cdk.Stack {
     const searchLambda = new lambda.Function(this, 'SearchFunction', {
       functionName: 'SupporterEngagement-Search',
       runtime: lambda.Runtime.NODEJS_20_X,
-      handler: 'index.handler',
-      code: lambda.Code.fromAsset('lambda/search', {
-        bundling: {
-          image: lambda.Runtime.NODEJS_20_X.bundlingImage,
-          command: [
-            'bash', '-c', [
-              'cp -r /asset-input/* /asset-output/',
-              'cd /asset-output',
-              'npm install --omit=dev'
-            ].join(' && ')
-          ]
-        }
-      }),
+      handler: 'search/index.handler',
+      code: lambda.Code.fromAsset('lambda/search/dist'),
       environment: lambdaEnvironment,
       role: lambdaRole,
       timeout: cdk.Duration.seconds(30),
