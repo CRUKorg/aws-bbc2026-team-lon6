@@ -1,0 +1,84 @@
+.impact-breakdown {
+  margin-bottom: 24px;
+}
+
+.impact-breakdown h3 {
+  margin: 0 0 16px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #2E008B;
+}
+
+.impact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.impact-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  background: #FFF0F7;
+  border-radius: 8px;
+  border-left: 4px solid #E40087;
+}
+
+.impact-icon {
+  font-size: 48px;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 8px;
+}
+
+.impact-details {
+  flex: 1;
+}
+
+.impact-amount {
+  font-size: 20px;
+  font-weight: 700;
+  color: #E40087;
+  margin-right: 8px;
+}
+
+.impact-month {
+  font-size: 14px;
+  color: #666;
+}
+
+.impact-title {
+  margin: 4px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2E008B;
+}
+
+.impact-description {
+  margin: 4px 0 0 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .impact-breakdown h3 {
+    font-size: 20px;
+  }
+
+  .impact-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .impact-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+  }
+}

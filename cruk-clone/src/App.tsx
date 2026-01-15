@@ -1,19 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ContentProvider } from './contexts/ContentContext';
 import { Header } from './components/Header';
 import { HeroCard } from './components/HeroCard';
 import { Footer } from './components/Footer';
 import { Sidebar } from './components/Sidebar';
 import { SmartText } from './components/SmartText';
+import { SearchBar } from './components/SearchBar';
+import { PersonalizationContainer } from './components/PersonalizationContainer';
+import { MissingDataPrompt } from './components/MissingDataPrompt';
+import { ConversationalInterface } from './components/ConversationalInterface';
 import './App.css';
 
 function App() {
+  const [showChat, setShowChat] = useState(false);
+  const [isAuthenticated] = useState(true); // Mock authentication - set to true to show personalization
+
   return (
     <ContentProvider>
       <div className="app">
         <Header />
         
         <main>
+          {/* Search Bar - Always visible */}
+          <section className="search-section">
+            <div className="container">
+              <SearchBar placeholder="what are you looking for today" />
+            </div>
+          </section>
+
+          {/* Personalization Container - Only for authenticated users */}
+          {isAuthenticated && (
+            <section className="personalization-section">
+              <div className="container">
+                <PersonalizationContainer userId="user-001" />
+              </div>
+            </section>
+          )}
+
+          {/* Missing Data Prompt - Only for users with incomplete profiles */}
+          {isAuthenticated && (
+            <section className="missing-data-section">
+              <div className="container">
+                <MissingDataPrompt userId="user-001" />
+              </div>
+            </section>
+          )}
+
           <section className="hero-section">
             <div className="container">
               <div className="hero-grid">
@@ -93,6 +125,38 @@ function App() {
         <Footer />
       </div>
       <Sidebar />
+
+      {/* Floating Chat Button */}
+      {!showChat && (
+        <button 
+          className="floating-chat-button"
+          onClick={() => setShowChat(true)}
+          aria-label="Open chat"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path 
+              d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+      )}
+
+      {/* Conversational Interface Modal */}
+      {showChat && (
+        <div className="chat-modal">
+          <div className="chat-modal-content">
+            <ConversationalInterface 
+              userId="user-001"
+              onClose={() => setShowChat(false)}
+            />
+          </div>
+        </div>
+      )}
     </ContentProvider>
   );
 }
