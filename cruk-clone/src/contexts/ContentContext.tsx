@@ -23,11 +23,19 @@ interface SuggestedLink {
   description: string;
 }
 
+interface DonationWidget {
+  title: string;
+  description: string;
+  suggestedAmounts: number[];
+  actionUrl: string;
+}
+
 interface ContentContextType {
   content: Record<string, string>;
   updateContent: (key: string, value: string) => void;
   generateAllContent: () => void;
   suggestedLinks: SuggestedLink[];
+  donationWidget: DonationWidget | null;
   currentUser: string | null;
   isLoading: boolean;
   error: string | null;
@@ -50,6 +58,7 @@ interface ContentProviderProps {
 export const ContentProvider: React.FC<ContentProviderProps> = ({ children }) => {
   const [content, setContent] = useState<Record<string, string>>({});
   const [suggestedLinks, setSuggestedLinks] = useState<SuggestedLink[]>([]);
+  const [donationWidget, setDonationWidget] = useState<DonationWidget | null>(null);
   const [currentUser, setCurrentUser] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -92,6 +101,19 @@ export const ContentProvider: React.FC<ContentProviderProps> = ({ children }) =>
       // Update suggested links if available
       if (data.suggestedLinks && Array.isArray(data.suggestedLinks)) {
         setSuggestedLinks(data.suggestedLinks);
+      }
+      
+      // Extract donation widget from call to action
+      if (data.uiComponents && data.uiComponents.length > 0) {
+        const ctaComponent = data.uiComponents.find((c: any) => c.type === 'call_to_action');
+        if (ctaComponent && ctaComponent.data) {
+          setDonationWidget({
+            title: ctaComponent.data.title || 'Support Cancer Research',
+            description: ctaComponent.data.description || 'Your donation helps fund vital cancer research',
+            suggestedAmounts: ctaComponent.data.suggestedAmounts || [10, 25, 50, 100],
+            actionUrl: ctaComponent.data.actionUrl || 'https://www.cancerresearchuk.org/donate'
+          });
+        }
       }
       
       // Update content with AI-generated text
@@ -145,6 +167,7 @@ export const ContentProvider: React.FC<ContentProviderProps> = ({ children }) =>
       updateContent, 
       generateAllContent,
       suggestedLinks,
+      donationWidget,
       currentUser,
       isLoading,
       error

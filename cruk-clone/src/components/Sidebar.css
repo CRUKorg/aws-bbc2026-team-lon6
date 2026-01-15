@@ -103,6 +103,81 @@
   cursor: not-allowed;
 }
 
+.donation-widget {
+  margin-top: 20px;
+  padding: 15px;
+  background: linear-gradient(135deg, #2e008b 0%, #ec008c 100%);
+  border-radius: 8px;
+  color: white;
+}
+
+.donation-widget h3 {
+  color: white;
+  font-size: 18px;
+  margin: 0 0 10px 0;
+  font-weight: bold;
+}
+
+.donation-description {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0 0 15px 0;
+}
+
+.donation-amounts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.amount-button {
+  background: white;
+  color: #2e008b;
+  border: 2px solid white;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.amount-button:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+.amount-button.selected {
+  background: #ec008c;
+  color: white;
+  border-color: #ec008c;
+}
+
+.btn-donate {
+  width: 100%;
+  background: white;
+  color: #2e008b;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-donate:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+.btn-donate:disabled {
+  background: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+}
+
 .suggested-links {
   margin-top: 20px;
   padding-top: 20px;

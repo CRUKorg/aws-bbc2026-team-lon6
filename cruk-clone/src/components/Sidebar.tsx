@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContent } from '../contexts/ContentContext';
 import './Sidebar.css';
 
 export const Sidebar: React.FC = () => {
-  const { content, generateAllContent, suggestedLinks, currentUser, isLoading, error } = useContent();
+  const { generateAllContent, suggestedLinks, donationWidget, currentUser, isLoading, error } = useContent();
+  const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
 
   const handleGenerate = () => {
     generateAllContent();
@@ -11,6 +12,12 @@ export const Sidebar: React.FC = () => {
 
   const handleReset = () => {
     window.location.reload();
+  };
+
+  const handleDonate = () => {
+    if (donationWidget) {
+      window.open(donationWidget.actionUrl, '_blank');
+    }
   };
 
   return (
@@ -62,6 +69,33 @@ export const Sidebar: React.FC = () => {
         </div>
       )}
 
+      {donationWidget && (
+        <div className="donation-widget">
+          <h3>{donationWidget.title}</h3>
+          <p className="donation-description">{donationWidget.description}</p>
+          
+          <div className="donation-amounts">
+            {donationWidget.suggestedAmounts.map((amount) => (
+              <button
+                key={amount}
+                className={`amount-button ${selectedAmount === amount ? 'selected' : ''}`}
+                onClick={() => setSelectedAmount(amount)}
+              >
+                £{amount}
+              </button>
+            ))}
+          </div>
+          
+          <button 
+            className="btn-donate" 
+            onClick={handleDonate}
+            disabled={!selectedAmount}
+          >
+            {selectedAmount ? `Donate £${selectedAmount}` : 'Select Amount'}
+          </button>
+        </div>
+      )}
+
       {suggestedLinks.length > 0 && (
         <div className="suggested-links">
           <h3>Suggested Links</h3>
@@ -80,23 +114,6 @@ export const Sidebar: React.FC = () => {
           ))}
         </div>
       )}
-
-      <div className="content-preview">
-        <h3>Active Content ({Object.keys(content).length} items)</h3>
-        {Object.entries(content).slice(0, 5).map(([key, value]) => (
-          <div key={key} className="content-item">
-            <span className="content-item-id">{key}</span>
-            <span className="content-item-text">
-              {value.length > 50 ? `${value.substring(0, 50)}...` : value}
-            </span>
-          </div>
-        ))}
-        {Object.keys(content).length > 5 && (
-          <p style={{ fontSize: '12px', color: '#666', marginTop: '10px' }}>
-            ...and {Object.keys(content).length - 5} more
-          </p>
-        )}
-      </div>
     </div>
   );
 };
