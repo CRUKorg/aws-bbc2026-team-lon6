@@ -1,0 +1,103 @@
+.donation-widget {
+  margin-bottom: 24px;
+}
+
+.donation-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-donate-amount {
+  flex: 1;
+  min-width: 120px;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-donate-amount.primary {
+  background: #E40087;
+  color: white;
+}
+
+.btn-donate-amount.primary:hover {
+  background: #C00075;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(228, 0, 135, 0.3);
+}
+
+.btn-donate-amount.secondary {
+  background: white;
+  color: #E40087;
+  border: 2px solid #E40087;
+}
+
+.btn-donate-amount.secondary:hover {
+  background: #FFF0F7;
+}
+
+.custom-amount {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.custom-amount input {
+  width: 100%;
+  padding: 14px 14px 14px 32px;
+  font-size: 16px;
+  border: 2px solid #E0E0E0;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.custom-amount input:focus {
+  outline: none;
+  border-color: #E40087;
+}
+
+.custom-amount .currency-symbol {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  font-weight: 600;
+  color: #666;
+}
+
+.monthly-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.monthly-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #E40087;
+}
+
+.monthly-checkbox span {
+  font-size: 14px;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .donation-buttons {
+    flex-direction: column;
+  }
+
+  .btn-donate-amount {
+    width: 100%;
+  }
+}

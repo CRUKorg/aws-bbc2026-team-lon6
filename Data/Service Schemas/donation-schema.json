@@ -1,0 +1,566 @@
+{
+  "type": "object",
+  "properties": {
+    "ThirdPartyReference": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Third party reference received from source."
+    },
+    "Amount": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Total amount of the donation (gross)"
+    },
+    "BankAccountCodeCRUK": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "CRUK bank account code. There is a list of values to use to map the correct value with the expected one in PersonHub."
+    },
+    "ReceivedDate": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 19,
+      "description": "Date when the donation was received from source. Accepted format: YYYY-MM-DD HH:mm:ss"
+    },
+    "DonationType": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Type of donation. There is a list of values to use to map the correct value with the expected one in PersonHub.",
+      "enum": [
+        "Expense",
+        "Legacy Income",
+        "Payment",
+        "Refund",
+        "Reversal",
+        "Tax Reclaim"
+      ]
+    },
+    "EventCode": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "This field is only available for sport events.\nEvent code related to the event linked to the donation."
+    },
+    "ExcludeFromFinanceFeed": {
+      "type": "boolean",
+      "maxLength": 5,
+      "description": "Flag to indicate if this payment needs to be excluded from Agresso. E.g  Donations which are sent to Agresso separately."
+    },
+    "FinancialPaymentReference": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Unique identifier of the payment. To be checked with the finance team what is the expected value.\n\nMapping requirements: ensure field value matches Donation.PaymentProviderTransactionId."
+    },
+    "RestrictionCode": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Restriction code related to the event linked to the donation. Leave it NULL if not required"
+    },
+    "DonationPaymentType": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Type of payment done. There is a list of values to use to map the correct value with the expected one in PersonHub.",
+      "enum": [
+        "Completed",
+        "Direct Debit",
+        "Credit Card",
+        "Cash",
+        "CAF Standing Order",
+        "CAF Single Payment",
+        "CAF Matched Giving",
+        "Non-CAF Voucher",
+        "CAF Voucher",
+        "CAF Card",
+        "American Express",
+        "Bank Credit Transfer",
+        "Bank Giro",
+        "Charity Credit Card",
+        "Cheque",
+        "Debit Card",
+        "Diners Card",
+        "Give As You Earn",
+        "Postal Order",
+        "Shop Blue",
+        "Standing Order",
+        "Switch",
+        "Pending",
+        "Query"
+      ]
+    },
+    "PaymentStatus": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Will be used for Salesforce Gift Refund entity for integration after go-live date. If DonationType = 'Refund' or DonationType = 'Reversal' then PaymentStatus, ELSE \"RMPaymentStatus\". Status of the payment. There is a list of values to use to map the correct value with the expected one in PersonHub.",
+      "enum": [
+        "Cancelled",
+        "Completed",
+        "Failed",
+        "Pending",
+        "Query",
+        "Authorised"
+      ]
+    },
+    "IsGiftAided": {
+      "type": "boolean",
+      "maxLength": 5,
+      "description": "Flag that indicates if the supporter wants the donation to be gift aid"
+    },
+    "IsPersonalPayment": {
+      "type": "boolean",
+      "maxLength": 5,
+      "description": "Flag that indicates if the supporter donation is a personal payment or not"
+    },
+    "ReasonNotGA": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Reason why the donation was not successfully GA"
+    },
+    "ProductCode": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Product code related to the event linked to the donation."
+    },
+    "FundraisingPageId": {
+      "type": "string",
+      "maxLength": 36,
+      "description": "Unique identifier of the page linked to the donation. Used to link the donation with the fundraising page. Leave it NULL if no fundraising page is linked to the donation.\n\nMapping requirements: ensure field value matches Donation.FundraisingActivityId."
+    },
+    "DonationId": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Unique identifier of the donation. It must be unique, otherwise it will be overriden in source. If a refund or reversal is done for an initial donation, this identifier must be different if the requirement is to not override the initial donation."
+    },
+    "PaymentAccount": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Source system account where the payment was done"
+    },
+    "PaymentCardProcessingFee": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Fee for processing a card payment"
+    },
+    "PaymentCommission": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Commission that the source system gets for the payment"
+    },
+    "PaymentGross": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Gross amount of the payment. If multiple donations are grouped under a unique payment, this field indicates the total gross amount of all the donations, paid to CRUK in a unique payment. Otherwise, this is the gross amount of each individual donation"
+    },
+    "PaymentNet": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Net amount of the payment. If multiple donations are grouped under a unique payment, this field indicates the total net amount of all the donations, paid to CRUK in a unique payment. Otherwise, this is the net amount of each individual donation"
+    },
+    "LetterCode": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Code representing the appropriate Thanking letter to be sent for this donation. Value to be defined with the stakeholders and CRM developers"
+    },
+    "PaymentVAT": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "VAT amount of the payment. If multiple donations are grouped under a unique payment, this field indicates the total VAT amount of all the donations, paid to CRUK in a unique payment. Otherwise, this is the VAT amount of each individual donation"
+    },
+    "DonationSource": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Source of the donation provided by the source (event, fundraising activity etc). Leave it NULL if unknown"
+    },
+    "DirectDebitPaymentFrequency": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "If the donation is a direct debit, this field indicates the frequency of it (monthly, weekly, annual). If it is not a direct donation then default it to 'Single'"
+    },
+    "DirectDebitStartDate": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 19,
+      "description": "Date when the direct debit starts. Leave it NULL if the donation is not a direct debit. Accepted format: YYYY-MM-DD HH:mm:ss"
+    },
+    "DonationCurrencyCode": {
+      "type": "string",
+      "maxLength": 5,
+      "description": "Currency code of the donation"
+    },
+    "DonorMessage": {
+      "type": "string",
+      "maxLength": 250,
+      "description": "Message placed by the donor in the donation message box"
+    },
+    "PaymentDate": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 19,
+      "description": "Date when the money has been transferred to CRUK bank account. If multiple donations are grouped under a unique payment, this field indicates the date the global payment has been done. Otherwise, this is the date of each individual donation. Accepted format: YYYY-MM-DD HH:mm:ss"
+    },
+    "TransitionalReliefAmount": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Transitional relief amount of the source system"
+    },
+    "TotalAmountIncludingGiftAidAndTransitionalRelief": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Total amount paid to CRUK, including the Gift Aid and the transitional relief amount"
+    },
+    "AppealName": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Name of campaign or appeal linked to the fundraising page. Leave it NULL if unknown"
+    },
+    "DonationPrivacyNoticeVersion": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Version of the donation privacy notice provided to the donor"
+    },
+    "DonationConsentStatement": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "Consent statement of the donation provided to the donor"
+    },
+    "ReferenceCharityArea": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Name of the charity area which the fundraising page was created for"
+    },
+    "ReferenceIncomeType": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Type of donation. If the donation is linked to a fundraising page then use \"Online fundraising\".\nIf it is a direct donation, one time then \"One time Direct Donation\". If it is a recurring direct donation then \"Recurring Direct Donation\""
+    },
+    "SMSOperatorDonorTransactionFee": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Fee of the SMS operator"
+    },
+    "PaymentProcessingFeeRate": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Fee rate of the payment processing"
+    },
+    "PaymentProcessingFeeAmount": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Fee amount of the payment processing"
+    },
+    "TransactionFeeRate": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Fee rate of the transaction"
+    },
+    "TotalSourceCharges": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Total amount of charges applied by the source system"
+    },
+    "TransactionFeeAmount": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Fee amount of the transaction"
+    },
+    "NetAmount": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Net amount of the donation."
+    },
+    "NetDonationMinusVAT": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Net amount of the donation minus the VAT."
+    },
+    "GiftAidAmount": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Total amount of the gift aid value"
+    },
+    "ParentPayment": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Unique identifier of the initial donation. Used for refunds and reversals to link the donation to its initial one."
+    },
+    "ReasonForRefund": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Reason for refunding the donation.  There is a list of values to use to map the correct value with the expected one in PersonHub.",
+      "enum": [
+        "Complaint",
+        "Duplicate Payment",
+        "Duplicate Registration",
+        "Incorrect Payment Amount",
+        "Over Payment",
+        "Entered Wrong Event",
+        "Unwell or Injured",
+        "Event Cancelled",
+        "Event Rescheduled",
+        "Unhappy With Service",
+        "No Longer Fundraising",
+        "Split Funds Required",
+        "Did Not Take Part in Event",
+        "Other – Description Required",
+        "Chose CRUK by Accident",
+        "Manual Direct Debit Refund",
+        "Mistake by bank",
+        "Mistake by supporter",
+        "Mistake by CRUK",
+        "Mental incapacity",
+        "Terms and conditions",
+        "Ex Gratia",
+        "ARUDD",
+        "Advance notice/amount disputed",
+        "Already cancelled with CRUK",
+        "Amount or date differs",
+        "Cancelled by bank",
+        "Change mind (after F2F)",
+        "DD challenged",
+        "Instruction invalid",
+        "No Instruction",
+        "Restricted Amendment",
+        "Returned Cheque",
+        "Switched to PAYE",
+        "User not recognised by payer",
+        "Escalated Fulfilment issue",
+        "Merchandise Return",
+        "CRUK Change of Venue",
+        "Early Bird T&C's",
+        "Fulfilment-Too late/Not rcv'd",
+        "Transactional error",
+        "Error - Data Capture",
+        "3rd Party Refund",
+        "Canvasser Notes Missing",
+        "Canvasser System Error",
+        "Chargeback",
+        "Coding Matrix Error",
+        "Forgot to use voucher",
+        "Gender",
+        "Incorrect Pricing",
+        "Mistake During Page Setup",
+        "Mistake by PP",
+        "New Information Available",
+        "Stakeholder Request",
+        "Underage"
+      ]
+    },
+    "FinancialBatchNumber": {
+      "type": "string",
+      "maxLength": 15,
+      "description": "Used by the Oxford team to group a number of individual transactions into a batch for accounting purposes. This is done in the Financial Batch screen - the batch numbers are auto-generated in Siebel and shown against the individual donations for reference."
+    },
+    "ThankingLetterStatus": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Status of the thanking letter process"
+    },
+    "GADLetterCode": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Code indicating the GAD letter to be sent. Value to be defined with the stakeholders and CRM developers"
+    },
+    "GADMethod": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Method used for the GiftAid declaration"
+    },
+    "Motivation": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Motivation for doing the donation"
+    },
+    "InMemoryName": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Donation done in the memory of a person"
+    },
+    "CelebrantDataSource": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Name of the celebrant company sharing the donation data"
+    },
+    "CelebrantExternalReference": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "External reference of the celebrant company sharing the donation data"
+    },
+    "GADType": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Gift Aid Type, coming directly from report file (pre populated), no logic from DI process"
+    },
+    "MobileOperator": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Mobile Operator through which the donation was done. Vodafone will be handling donation data differently to all other networks therefore it is important that supporters who have donated via Vodafone can be identified. This is to allow the claims team to include/exclude certain mobile operators"
+    },
+    "Keyword": {
+      "type": "string",
+      "maxLength": 140,
+      "description": "Keyword used to identify some donation campaigns, like the SMS ones"
+    },
+    "ShortCode": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Short code of the bank account from which the donation was done"
+    },
+    "SMSToCompleteDate": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 19,
+      "description": "When a donation is done through an SMS, this field contains the date the donation is done. Accepted format: YYYY-MM-DD HH:mm:ss"
+    },
+    "ReceivedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "maxLength": 19,
+      "description": "Date and Time of the reception of the donation. Accepted format: YYYY-MM-DD HH:mm:ss"
+    },
+    "UniqueId": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Unique identifier of a donation from source"
+    },
+    "RegistrationId": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Unique identifier of the donation registration."
+    },
+    "CardSchemeType": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Type of the Card Scheme *Consumer/Corporate"
+    },
+    "OrderReference": {
+      "type": "string",
+      "maxLength": 36,
+      "description": "Reference of the order, used to link donations to the source recurring payment order.\n\nThis is mapped into the listOfDonations.donations.orderReference field in the Siebel xml. and the 'SRM Order Reference' field in the Siebel UI."
+    },
+    "SourceReference": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Reference of the source of the donation."
+    },
+    "PaymentProviderTransactionId": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "\"A unique identifier assigned to a donation transaction by the source or a payment processor (such as Briantree, Paypal or anothe third party payment provider). Finance Team uses this Id for tracking, reconciliation, reporting and trouble shooting purposes. For Paypal, it is the Capture ID (completed payment).\n\nMapping requirements: ensure field value matches Donation.FinancialPaymentReference.\""
+    },
+    "FundraisingActivityId": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Unique identifier of the fundraising page assigned in the source system. It must be unique and cannot be NULL, so a unique value must be assigned if not provided at source when sharing the fundraising page details."
+    },
+    "RMCampaignCode": {
+      "type": "string",
+      "maxLength": 80,
+      "description": "This is the unique identifier used for a specific Marketing Campaign, added for the Salesforce Integration."
+    },
+    "RMDataSource": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "This refers to the system that sent the data, added for the Salesforce Integration."
+    },
+    "RMEventCode": {
+      "type": "string",
+      "maxLength": 80,
+      "description": "This is the unique identifier for a specific event or activity that supporters can participate in for fundraising. Added for the Salesforce Integration."
+    },
+    "RMFinancialAccountType": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "A categorisation of the source of a transaction into generic types (E.g. Income, expenditure, assets and liabilities to which the transactions are posted) which map to account code in CRUK Finance System. They should be applicable across business units and organisations. Added for the Salesforce Integration."
+    },
+    "RMFinancialAccountSubType": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "A further breakdown of the Financial Account Type. The purpose is to provide more detailed information on how income/expenditure is generated/spent (e.g. entry fee or donations). This maps to activity code in CRUK Finance System. Added for the Salesforce Integration."
+    },
+    "RMInMemoriam": {
+      "type": "boolean",
+      "maxLength": 5,
+      "description": "Indicates that a donation has been made in memory of a person. Added for the Salesforce Integration."
+    },
+    "RMProductCode": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "The unique identifier for a specific CRUK financial product. Added for the Salesforce Integration."
+    },
+    "RMCollectionType": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "The \"Method of Fundraising\" field categorises the various ways in which donations and support are generated for CRUK. This field helps in understanding and tracking the source and type of fundraising that has led to a donation. Added for the Salesforce Integration."
+    },
+    "RMMerchandiseType": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Merchandise reference information for retail purchases, added for the Salesforce Integration."
+    },
+    "RMDonationAmount": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "The total amount of a financial transaction received and included tax, added for the Salesforce Integration."
+    },
+    "OwnerType": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "This field is to indicate if the source sends Organisations or Individual supporters data. If the source clearly identifies the type then they will send 'Organisation' for organisations supporters, 'Supporter' for individual supporters. If the source cannot identify the type then they will send NULL.",
+      "enum": ["Supporter", "Organisation"]
+    },
+    "RMAnonymousDonor": {
+      "type": "boolean",
+      "maxLength": 5,
+      "description": "Indicates whether the Donor is Anonymous, set to true if AnonymousAtSource and GuestIndicator are both TRUE"
+    },
+    "RMFinancialGrouping": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Financial grouping based on payment method. Value should match provided options in LOV."
+    },
+    "RMPaymentStatus": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Will be used for Salesorce Gift Transaction entity only. Details the Status of a payment, value should match provided options in LOV.",
+      "enum": [
+        "Cancelled",
+        "Failed",
+        "Paid",
+        "Pending",
+        "Fully Refunded",
+        "Unpaid",
+        "Written Off"
+      ]
+    },
+    "RMThankingStatus": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Status of Thanking Letter for Salesforce. Value should match provided options in LOV, or provide null if not applicable / not known.",
+      "enum": [
+        "Thanked by Other",
+        "Not Thanked",
+        "Not Sent",
+        "Not Required",
+        "Thanked by Email",
+        "Sent",
+        "Extracted"
+      ]
+    }
+  },
+  "required": [
+    "Amount",
+    "BankAccountCodeCRUK",
+    "ReceivedDate",
+    "DonationType",
+    "ExcludeFromFinanceFeed",
+    "FinancialPaymentReference",
+    "DonationId",
+    "DonationPaymentType",
+    "PaymentStatus",
+    "IsGiftAided",
+    "IsPersonalPayment",
+    "ProductCode",
+    "PaymentProviderTransactionId",
+    "RMAnonymousDonor",
+    "RMFinancialGrouping",
+    "RMPaymentStatus"
+  ]
+}

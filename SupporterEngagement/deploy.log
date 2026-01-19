@@ -1,0 +1,79 @@
+[WARNING] aws-cdk-lib.aws_dynamodb.TableOptions#pointInTimeRecovery is deprecated.
+  use `pointInTimeRecoverySpecification` instead
+  This API will be removed in the next major release.
+[WARNING] aws-cdk-lib.aws_dynamodb.TableOptions#pointInTimeRecovery is deprecated.
+  use `pointInTimeRecoverySpecification` instead
+  This API will be removed in the next major release.
+[WARNING] aws-cdk-lib.aws_dynamodb.TableOptions#pointInTimeRecovery is deprecated.
+  use `pointInTimeRecoverySpecification` instead
+  This API will be removed in the next major release.
+[Warning at /SupporterEngagementStack/LambdaExecutionRole] Failed to add construct metadata for node [LambdaExecutionRole]. Reason: ValidationError: The result of fromAwsManagedPolicyName can not be used in this API [ack: @aws-cdk/core:addConstructMetadataFailed]
+[Warning at /SupporterEngagementStack/SupporterEngagementApi/CloudWatchRole] Failed to add construct metadata for node [CloudWatchRole]. Reason: ValidationError: The result of fromAwsManagedPolicyName can not be used in this API [ack: @aws-cdk/core:addConstructMetadataFailed]
+
+✨  Synthesis time: 8.26s
+
+SupporterEngagementStack: start: Building GetUserProfileFunction/Code
+SupporterEngagementStack: success: Built GetUserProfileFunction/Code
+SupporterEngagementStack: start: Building PersonalizationAgentFunction/Code
+SupporterEngagementStack: success: Built PersonalizationAgentFunction/Code
+SupporterEngagementStack: start: Building SearchFunction/Code
+SupporterEngagementStack: success: Built SearchFunction/Code
+SupporterEngagementStack: start: Building SupporterEngagementStack Template
+SupporterEngagementStack: success: Built SupporterEngagementStack Template
+SupporterEngagementStack: start: Publishing SearchFunction/Code (226892087814-us-west-2-2fccae14)
+SupporterEngagementStack: start: Publishing GetUserProfileFunction/Code (226892087814-us-west-2-925861f1)
+SupporterEngagementStack: start: Publishing SupporterEngagementStack Template (226892087814-us-west-2-45753a51)
+SupporterEngagementStack: start: Publishing PersonalizationAgentFunction/Code (226892087814-us-west-2-f4b2e8c7)
+SupporterEngagementStack: success: Published SupporterEngagementStack Template (226892087814-us-west-2-45753a51)
+SupporterEngagementStack: success: Published SearchFunction/Code (226892087814-us-west-2-2fccae14)
+SupporterEngagementStack: success: Published GetUserProfileFunction/Code (226892087814-us-west-2-925861f1)
+SupporterEngagementStack: success: Published PersonalizationAgentFunction/Code (226892087814-us-west-2-f4b2e8c7)
+SupporterEngagementStack: deploying... [1/1]
+SupporterEngagementStack: creating CloudFormation changeset...
+SupporterEngagementStack |  0/17 | 10:15:59 AM | UPDATE_IN_PROGRESS   | AWS::CloudFormation::Stack        | SupporterEngagementStack User Initiated
+SupporterEngagementStack |  0/17 | 10:16:04 AM | UPDATE_IN_PROGRESS   | AWS::Lambda::Function             | GetUserProfileFunction (GetUserProfileFunction5C3703B0) 
+SupporterEngagementStack |  0/17 | 10:16:04 AM | UPDATE_IN_PROGRESS   | AWS::Lambda::Function             | SearchFunction (SearchFunctionEC64A147) 
+SupporterEngagementStack |  0/17 | 10:16:04 AM | UPDATE_IN_PROGRESS   | AWS::Lambda::Function             | PersonalizationAgentFunction (PersonalizationAgentFunction3D2BC369) 
+SupporterEngagementStack |  1/17 | 10:16:12 AM | UPDATE_COMPLETE      | AWS::Lambda::Function             | SearchFunction (SearchFunctionEC64A147) 
+SupporterEngagementStack |  2/17 | 10:16:12 AM | UPDATE_COMPLETE      | AWS::Lambda::Function             | GetUserProfileFunction (GetUserProfileFunction5C3703B0) 
+SupporterEngagementStack |  3/17 | 10:16:14 AM | UPDATE_COMPLETE      | AWS::Lambda::Function             | PersonalizationAgentFunction (PersonalizationAgentFunction3D2BC369) 
+SupporterEngagementStack |  4/17 | 10:16:17 AM | UPDATE_COMPLETE_CLEA | AWS::CloudFormation::Stack        | SupporterEngagementStack 
+SupporterEngagementStack |  5/17 | 10:16:18 AM | UPDATE_COMPLETE      | AWS::CloudFormation::Stack        | SupporterEngagementStack 
+
+ ✅  SupporterEngagementStack
+
+✨  Deployment time: 48.76s
+
+Outputs:
+SupporterEngagementStack.ApiKeyId = rtt994v9nb
+SupporterEngagementStack.ApiUrl = https://y55nn7iac9.execute-api.us-west-2.amazonaws.com/prod/
+SupporterEngagementStack.ContextTableName = SupporterEngagement-Context
+SupporterEngagementStack.DonationTableName = SupporterEngagement-Donations
+SupporterEngagementStack.SupporterEngagementApiEndpointD82F3B7C = https://y55nn7iac9.execute-api.us-west-2.amazonaws.com/prod/
+SupporterEngagementStack.UserTableName = SupporterEngagement-Users
+SupporterEngagementStack.WebSocketUrl = wss://i1fwoeho25.execute-api.us-west-2.amazonaws.com/prod
+Stack ARN:
+arn:aws:cloudformation:us-west-2:226892087814:stack/SupporterEngagementStack/4529ec00-f148-11f0-b6e5-0ae5f0648053
+
+✨  Total time: 57.02s
+
+
+NOTICES         (What's this? https://github.com/aws/aws-cdk/wiki/CLI-Notices)
+
+34892	CDK CLI collects telemetry data on command usage starting at version 2.1100.0 (unless opted out)
+
+	Overview: We do not collect customer content and we anonymize the
+	          telemetry we do collect. See the attached issue for more
+	          information on what data is collected, why, and how to
+	          opt-out. Telemetry will NOT be collected for any CDK CLI
+	          version prior to version 2.1100.0 - regardless of
+	          opt-in/out. You can also view the telemetry we collect by
+	          logging it to a local file, by adding
+	          `--telemetry-file=my/local/file` to any `cdk` command.
+
+	Affected versions: cli: ^2.1100.0
+
+	More information at: https://github.com/aws/aws-cdk/issues/34892
+
+
+If you don’t want to see a notice anymore, use "cdk acknowledge <id>". For example, "cdk acknowledge 34892".

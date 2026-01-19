@@ -1,0 +1,59 @@
+.campaign-progress {
+  background: #F5F5F5;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.campaign-progress h3 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2E008B;
+}
+
+.progress-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.progress-amount {
+  font-size: 20px;
+  font-weight: 700;
+  color: #E40087;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 12px;
+  background: #E0E0E0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00B8A9 0%, #E40087 100%);
+  border-radius: 6px;
+  transition: width 0.3s ease;
+}
+
+.progress-target {
+  font-size: 14px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .campaign-progress {
+    padding: 16px;
+  }
+
+  .campaign-progress h3 {
+    font-size: 16px;
+  }
+
+  .progress-amount {
+    font-size: 18px;
+  }
+}
