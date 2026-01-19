@@ -1,0 +1,23 @@
+{
+  "deployment": {
+    "account": "226892087814",
+    "region": "us-west-2",
+    "stackName": "MichaelSupporterEngagement",
+    "environment": "sandbox",
+    "team": "Michael"
+  },
+  "resourceNames": {
+    "userProfilesTable": "michael-supporter-engagement-user-profiles",
+    "contextTable": "michael-supporter-engagement-context",
+    "engagementTable": "michael-supporter-engagement-engagement",
+    "analyticsTable": "michael-supporter-engagement-analytics",
+    "researchPapersBucket": "michael-supporter-engagement-research-papers",
+    "contentBucket": "michael-supporter-engagement-content"
+  },
+  "availability-zones:account=226892087814:region=us-west-2": [
+    "us-west-2a",
+    "us-west-2b",
+    "us-west-2c",
+    "us-west-2d"
+  ]
+}

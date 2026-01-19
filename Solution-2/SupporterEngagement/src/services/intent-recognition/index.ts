@@ -1,0 +1,1 @@
+export { IntentRecognitionService } from './IntentRecognitionService';

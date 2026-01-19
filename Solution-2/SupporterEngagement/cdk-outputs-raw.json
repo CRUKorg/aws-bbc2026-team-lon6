@@ -1,0 +1,36 @@
+[
+    {
+        "OutputKey": "ApiUrl",
+        "OutputValue": "https://y55nn7iac9.execute-api.us-west-2.amazonaws.com/prod/",
+        "Description": "API Gateway URL"
+    },
+    {
+        "OutputKey": "ApiKeyId",
+        "OutputValue": "rtt994v9nb",
+        "Description": "API Key ID"
+    },
+    {
+        "OutputKey": "WebSocketUrl",
+        "OutputValue": "wss://i1fwoeho25.execute-api.us-west-2.amazonaws.com/prod",
+        "Description": "WebSocket API URL"
+    },
+    {
+        "OutputKey": "UserTableName",
+        "OutputValue": "SupporterEngagement-Users",
+        "Description": "User Profiles Table Name"
+    },
+    {
+        "OutputKey": "SupporterEngagementApiEndpointD82F3B7C",
+        "OutputValue": "https://y55nn7iac9.execute-api.us-west-2.amazonaws.com/prod/"
+    },
+    {
+        "OutputKey": "DonationTableName",
+        "OutputValue": "SupporterEngagement-Donations",
+        "Description": "Donations Table Name"
+    },
+    {
+        "OutputKey": "ContextTableName",
+        "OutputValue": "SupporterEngagement-Context",
+        "Description": "User Context Table Name"
+    }
+]

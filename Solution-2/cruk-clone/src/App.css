@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f5f5;
+}
+
+.app {
+  margin-right: 300px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero-section {
+  padding: 40px 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.section-title {
+  color: #2e008b;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin: 40px 0 30px;
+}
+
+.banner {
+  background: linear-gradient(rgba(46, 0, 139, 0.85), rgba(236, 0, 140, 0.85)), 
+              url('../public/images/get-involved.png') center/cover;
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  margin: 40px 0;
+  position: relative;
+}
+
+.banner-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+}
+
+.banner-text {
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 30px;
+}
+
+.banner-button {
+  background: white;
+  color: #2e008b;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.banner-button:hover {
+  background: #f5f5f5;
+}

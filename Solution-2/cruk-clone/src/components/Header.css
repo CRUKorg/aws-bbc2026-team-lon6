@@ -1,0 +1,81 @@
+.header {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-top {
+  background: #2e008b;
+  padding: 10px 0;
+}
+
+.header-nav {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+}
+
+.header-main {
+  padding: 20px 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 50px;
+  width: auto;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-search, .btn-donate {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-search {
+  background: white;
+  color: #2e008b;
+  border: 2px solid #2e008b;
+}
+
+.btn-search:hover {
+  background: #f5f5f5;
+}
+
+.btn-donate {
+  background: #ec008c;
+  color: white;
+}
+
+.btn-donate:hover {
+  background: #d00080;
+}

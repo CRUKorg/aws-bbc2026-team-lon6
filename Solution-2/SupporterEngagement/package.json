@@ -1,0 +1,54 @@
+{
+  "name": "supporter_engagement",
+  "version": "0.1.0",
+  "bin": {
+    "supporter_engagement": "bin/supporter_engagement.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "test:property": "jest --testMatch='**/*.property.test.ts'",
+    "cdk": "cdk",
+    "verify": "ts-node scripts/verify-deployment-ready.ts",
+    "reset": "ts-node scripts/reset-demo-data.ts",
+    "seed": "ts-node scripts/seed-databases.ts",
+    "mvp-test": "ts-node scripts/mvp-test.ts",
+    "deploy": "npm run build && cdk deploy",
+    "deploy:quick": "npm run build && cdk deploy --require-approval never",
+    "deploy:mvp": "./scripts/deploy-mvp.sh",
+    "demo:sarah": "ts-node scripts/demo-sarah.ts",
+    "demo:james": "ts-node scripts/demo-james.ts",
+    "demo:john": "ts-node scripts/demo-john-profile-update.ts",
+    "demo:ideal": "ts-node scripts/demo-ideal-journey.ts",
+    "demo:ideal:james": "ts-node scripts/demo-ideal-journey-james.ts",
+    "demo:ideal:james:impact": "ts-node scripts/demo-ideal-journey-james-impact.ts",
+    "demo:all": "npm run demo:sarah && echo '\n\n' && npm run demo:james",
+    "demo:live": "./scripts/demo-live.sh",
+    "demo:prepare": "npm run reset && npm run seed"
+  },
+  "devDependencies": {
+    "@types/jest": "^30",
+    "@types/node": "^24.10.1",
+    "@types/aws-lambda": "^8.10.145",
+    "jest": "^30",
+    "ts-jest": "^29",
+    "aws-cdk": "2.1100.3",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.9.3",
+    "fast-check": "^3.15.0"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.232.2",
+    "constructs": "^10.0.0",
+    "@aws-sdk/client-dynamodb": "^3.699.0",
+    "@aws-sdk/lib-dynamodb": "^3.699.0",
+    "@aws-sdk/client-s3": "^3.699.0",
+    "@aws-sdk/client-rds": "^3.699.0",
+    "@aws-sdk/client-bedrock-runtime": "^3.699.0",
+    "@aws-sdk/client-cognito-identity-provider": "^3.699.0",
+    "@aws-sdk/client-cloudwatch": "^3.699.0",
+    "redis": "^4.6.13",
+    "dotenv": "^16.4.5"
+  }
+}
